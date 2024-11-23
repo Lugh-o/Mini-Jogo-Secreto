@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://divjkxtmomngq"]
+
+[ext_resource type="Script" path="res://Scripts/pearlminigamemain.cs" id="1_2vuy4"]
+[ext_resource type="Texture2D" uid="uid://cwwbtvnxmgic7" path="res://icon.svg" id="2_h1hji"]
+[ext_resource type="Texture2D" uid="uid://b562vnq38ft0c" path="res://assets/Placeholders/pinça.webp" id="3_mek16"]
+[ext_resource type="Texture2D" uid="uid://uwxvbyfyn8ep" path="res://assets/Placeholders/542550-1-600x400.jpg-removebg-preview.png" id="4_s08th"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_43rj5"]
+
+[node name="PearlMinigame" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+position_smoothing_enabled = true
+
+[node name="Room3" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(7.21961e-07, 0.529794, 0.417895, 1)
+
+[node name="PearlMinigame" type="Node2D" parent="."]
+script = ExtResource("1_2vuy4")
+
+[node name="Sprite2D" type="Sprite2D" parent="PearlMinigame"]
+position = Vector2(576, 306)
+texture = ExtResource("2_h1hji")
+
+[node name="pinca" type="Sprite2D" parent="PearlMinigame"]
+position = Vector2(476, 800)
+scale = Vector2(0.425781, 0.425781)
+texture = ExtResource("3_mek16")
+
+[node name="Button" type="Button" parent="PearlMinigame/pinca"]
+offset_left = -129.0
+offset_top = -249.0
+offset_right = 122.0
+offset_bottom = 242.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_43rj5")
+metadata/_edit_use_anchors_ = true
+
+[node name="pegador" type="Sprite2D" parent="PearlMinigame"]
+position = Vector2(676, 800)
+rotation = -1.309
+scale = Vector2(0.425781, 0.425781)
+texture = ExtResource("4_s08th")
+
+[node name="Button2" type="Button" parent="PearlMinigame/pegador"]
+offset_left = 229.0
+offset_top = -172.0
+offset_right = 444.0
+offset_bottom = 363.0
+rotation = 1.309
+theme_override_styles/focus = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_43rj5")
+
+[connection signal="pressed" from="PearlMinigame/pinca/Button" to="PearlMinigame" method="pincaPressed"]
+[connection signal="pressed" from="PearlMinigame/pegador/Button2" to="PearlMinigame" method="TweezersPressed"]
