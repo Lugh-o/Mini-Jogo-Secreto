@@ -1,25 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjbkn1revra71"]
+[gd_scene load_steps=3 format=3 uid="uid://bjbkn1revra71"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/main_scene.gd" id="1_oyh4y"]
 [ext_resource type="Texture2D" uid="uid://b10we274quci6" path="res://assets/controlls/arrow-right-solid.svg" id="2_8gl78"]
-
-[sub_resource type="Curve2D" id="Curve2D_g1euc"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 576, 324, 0, 0, 0, 0, 1728, 324)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_41mbr"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 576, 324, 0, 0, 0, 0, -576, 324)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_hv2ju"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 576, 324, 0, 0, 0, 0, 576, -324)
-}
-point_count = 2
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_oyh4y")
@@ -50,26 +32,6 @@ color = Color(7.21961e-07, 0.529794, 0.417895, 1)
 offset_top = -648.0
 offset_right = 1152.0
 color = Color(0.422624, 0.272308, 1, 1)
-
-[node name="Path12" type="Path2D" parent="."]
-curve = SubResource("Curve2D_g1euc")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path12"]
-position = Vector2(576, 324)
-
-[node name="Path13" type="Path2D" parent="."]
-curve = SubResource("Curve2D_41mbr")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path13"]
-position = Vector2(576, 324)
-rotation = 3.14159
-
-[node name="Path14" type="Path2D" parent="."]
-curve = SubResource("Curve2D_hv2ju")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path14"]
-position = Vector2(576, 324)
-rotation = -1.5708
 
 [node name="Control" type="Node2D" parent="."]
 

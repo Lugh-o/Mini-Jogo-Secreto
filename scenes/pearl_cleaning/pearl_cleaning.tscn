@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjakybops5iu0"]
+
+[ext_resource type="Script" path="res://scenes/pearl_cleaning/pearl_cleaning.gd" id="1_28cg8"]
+[ext_resource type="Texture2D" uid="uid://bstx0v613hm6e" path="res://assets/pearl/pngwing.com.png" id="1_ncb3o"]
+[ext_resource type="Texture2D" uid="uid://dii8tro3k8lfj" path="res://assets/pearl_cleaning/brush.png" id="2_arbdv"]
+[ext_resource type="Texture2D" uid="uid://clchqu4yf76sj" path="res://assets/pearl_cleaning/polish.png" id="3_010op"]
+[ext_resource type="Texture2D" uid="uid://dunvyfov0mjie" path="res://assets/pearl_cleaning/ducttape.png" id="4_a0i1c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glqwu"]
+size = Vector2(1305.46, 1381.84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6o4po"]
+size = Vector2(409.91, 391.892)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxbem"]
+size = Vector2(492.5, 155)
+
+[node name="PearlCleaning" type="Node2D"]
+script = ExtResource("1_28cg8")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.439516, 0.488277, 0.503068, 1)
+
+[node name="Pearl" type="Sprite2D" parent="."]
+position = Vector2(576, 229)
+scale = Vector2(0.602, 0.602)
+texture = ExtResource("1_ncb3o")
+
+[node name="Polish" type="Sprite2D" parent="."]
+position = Vector2(876, 633)
+scale = Vector2(0.144011, 0.144011)
+texture = ExtResource("3_010op")
+
+[node name="PolishButton" type="Button" parent="Polish"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -743.0
+offset_right = -750.0
+offset_bottom = -743.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Area2D" type="Area2D" parent="Polish"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polish/Area2D"]
+position = Vector2(-76.3833, 38.1904)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_glqwu")
+
+[node name="Tape" type="Sprite2D" parent="."]
+position = Vector2(576, 633)
+scale = Vector2(0.444, 0.444)
+texture = ExtResource("4_a0i1c")
+
+[node name="TapeButton" type="Button" parent="Tape"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = -250.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Area2D" type="Area2D" parent="Tape"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tape/Area2D"]
+position = Vector2(0, -2.25244)
+shape = SubResource("RectangleShape2D_6o4po")
+
+[node name="Brush" type="Sprite2D" parent="."]
+position = Vector2(276, 633)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_arbdv")
+
+[node name="BrushButton" type="Button" parent="Brush"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = -250.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Area2D" type="Area2D" parent="Brush"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brush/Area2D"]
+position = Vector2(1.25, -2.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_vxbem")
+
+[connection signal="button_down" from="Polish/PolishButton" to="." method="_on_polish_button_down"]
+[connection signal="button_down" from="Tape/TapeButton" to="." method="_on_tape_button_down"]
+[connection signal="button_down" from="Brush/BrushButton" to="." method="_on_brush_button_down"]

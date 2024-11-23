@@ -10,6 +10,7 @@ func _ready() -> void:
 	handle_connecting_signals()
 
 func on_start_pressed() -> void:
+	# TODO colocar uma transição
 	get_tree().change_scene_to_packed(main_scene)
 
 func on_exit_pressed() -> void:
