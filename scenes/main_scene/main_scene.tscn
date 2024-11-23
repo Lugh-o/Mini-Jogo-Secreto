@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjbkn1revra71"]
+
+[ext_resource type="Script" path="res://scenes/main_scene/main_scene.gd" id="1_oyh4y"]
+[ext_resource type="Texture2D" uid="uid://b10we274quci6" path="res://assets/controlls/arrow-right-solid.svg" id="2_8gl78"]
+
+[sub_resource type="Curve2D" id="Curve2D_g1euc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 576, 324, 0, 0, 0, 0, 1728, 324)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_41mbr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 576, 324, 0, 0, 0, 0, -576, 324)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_hv2ju"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 576, 324, 0, 0, 0, 0, 576, -324)
+}
+point_count = 2
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_oyh4y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+position_smoothing_enabled = true
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Room1" type="ColorRect" parent="Background"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0373088, 0.480752, 0.709071, 1)
+
+[node name="Room2" type="ColorRect" parent="Background"]
+offset_left = 1152.0
+offset_right = 2304.0
+offset_bottom = 648.0
+color = Color(0, 0.517998, 0.514223, 1)
+
+[node name="Room3" type="ColorRect" parent="Background"]
+offset_left = -1152.0
+offset_bottom = 648.0
+color = Color(7.21961e-07, 0.529794, 0.417895, 1)
+
+[node name="Room4" type="ColorRect" parent="Background"]
+offset_top = -648.0
+offset_right = 1152.0
+color = Color(0.422624, 0.272308, 1, 1)
+
+[node name="Path12" type="Path2D" parent="."]
+curve = SubResource("Curve2D_g1euc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path12"]
+position = Vector2(576, 324)
+
+[node name="Path13" type="Path2D" parent="."]
+curve = SubResource("Curve2D_41mbr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path13"]
+position = Vector2(576, 324)
+rotation = 3.14159
+
+[node name="Path14" type="Path2D" parent="."]
+curve = SubResource("Curve2D_hv2ju")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path14"]
+position = Vector2(576, 324)
+rotation = -1.5708
+
+[node name="Control" type="Node2D" parent="."]
+
+[node name="1to2Button" type="Button" parent="Control"]
+offset_left = 1059.0
+offset_top = 272.0
+offset_right = 1515.0
+offset_bottom = 792.0
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_8gl78")
+
+[node name="2to1Button" type="Button" parent="Control"]
+offset_left = 1246.0
+offset_top = 376.0
+offset_right = 1702.0
+offset_bottom = 896.0
+rotation = -3.14159
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_8gl78")
+
+[node name="1to3Button" type="Button" parent="Control"]
+offset_left = 92.0
+offset_top = 376.0
+offset_right = 548.0
+offset_bottom = 896.0
+rotation = -3.14159
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_8gl78")
+
+[node name="3to1Button" type="Button" parent="Control"]
+offset_left = -92.0
+offset_top = 272.0
+offset_right = 364.0
+offset_bottom = 792.0
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_8gl78")
+
+[node name="1to4Button" type="Button" parent="Control"]
+offset_left = 525.0
+offset_top = 92.0
+offset_right = 981.0
+offset_bottom = 612.0
+rotation = -1.5708
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_8gl78")
+
+[node name="4to1Button" type="Button" parent="Control"]
+offset_left = 628.0
+offset_top = -93.0
+offset_right = 1084.0
+offset_bottom = 427.0
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_8gl78")
+
+[connection signal="pressed" from="Control/1to2Button" to="." method="one_to_two_button_pressed"]
+[connection signal="pressed" from="Control/2to1Button" to="." method="two_to_one_button_pressed"]
+[connection signal="pressed" from="Control/1to3Button" to="." method="one_to_three_button_pressed"]
+[connection signal="pressed" from="Control/3to1Button" to="." method="three_to_one_button_pressed"]
+[connection signal="pressed" from="Control/1to4Button" to="." method="one_to_four_button_pressed"]
+[connection signal="pressed" from="Control/4to1Button" to="." method="four_to_one_button_pressed"]
