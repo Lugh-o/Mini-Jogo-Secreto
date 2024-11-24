@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctr6tykisadv4"]
+
+[ext_resource type="Texture2D" uid="uid://b6osb7uglx6by" path="res://assets/pearl_cleaning/shine.png" id="1_5hek6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ut8nd"]
+
+[node name="Shine" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0803809, 0.0803809)
+texture = ExtResource("1_5hek6")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("RectangleShape2D_ut8nd")
