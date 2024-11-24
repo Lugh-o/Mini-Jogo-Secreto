@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjbkn1revra71"]
+[gd_scene load_steps=4 format=3 uid="uid://bjbkn1revra71"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/main_scene.gd" id="1_oyh4y"]
 [ext_resource type="Texture2D" uid="uid://b10we274quci6" path="res://assets/controlls/arrow-right-solid.svg" id="2_8gl78"]
+[ext_resource type="Script" path="res://Scripts/Interactables.cs" id="3_rfoeh"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_oyh4y")
@@ -87,9 +88,19 @@ rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 icon = ExtResource("2_8gl78")
 
+[node name="Interactables" type="Node2D" parent="."]
+script = ExtResource("3_rfoeh")
+
+[node name="PearlFarming" type="Button" parent="Interactables"]
+offset_left = -1050.0
+offset_top = 66.0
+offset_right = -809.0
+offset_bottom = 315.0
+
 [connection signal="pressed" from="Control/1to2Button" to="." method="one_to_two_button_pressed"]
 [connection signal="pressed" from="Control/2to1Button" to="." method="two_to_one_button_pressed"]
 [connection signal="pressed" from="Control/1to3Button" to="." method="one_to_three_button_pressed"]
 [connection signal="pressed" from="Control/3to1Button" to="." method="three_to_one_button_pressed"]
 [connection signal="pressed" from="Control/1to4Button" to="." method="one_to_four_button_pressed"]
 [connection signal="pressed" from="Control/4to1Button" to="." method="four_to_one_button_pressed"]
+[connection signal="pressed" from="Interactables/PearlFarming" to="Interactables" method="OnPearlClicked"]
