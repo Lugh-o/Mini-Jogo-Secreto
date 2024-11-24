@@ -1,0 +1,237 @@
+[gd_scene load_steps=7 format=3 uid="uid://b60ut84td1f0e"]
+
+[ext_resource type="Script" path="res://scenes/pearl_shop/pearl_shop.gd" id="1_u4r7i"]
+
+[sub_resource type="SystemFont" id="SystemFont_jrkqa"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_4b5bt"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_xb6ac"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_q0vfa"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_d2tuu"]
+font_names = PackedStringArray("Impact")
+
+[node name="PearlShop" type="Node2D"]
+script = ExtResource("1_u4r7i")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.439516, 0.488277, 0.503068, 1)
+
+[node name="DialogueBox" type="ColorRect" parent="."]
+visible = false
+offset_left = 1.0
+offset_top = 232.0
+offset_right = 1153.0
+offset_bottom = 362.0
+color = Color(0.568532, 0.670597, 0.995948, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueBox"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_jrkqa")
+bbcode_enabled = true
+text = "TESTANDO DIÁLOGO"
+threaded = true
+
+[node name="Questions" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -16.0
+offset_right = 1.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuestionButton1" type="ColorRect" parent="Questions"]
+offset_left = 177.0
+offset_top = 400.0
+offset_right = 975.0
+offset_bottom = 467.0
+color = Color(0.568532, 0.670597, 0.995948, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Questions/QuestionButton1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_4b5bt")
+bbcode_enabled = true
+fit_content = true
+
+[node name="Button1" type="Button" parent="Questions/QuestionButton1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="QuestionButton2" type="ColorRect" parent="Questions"]
+offset_left = 177.0
+offset_top = 480.0
+offset_right = 975.0
+offset_bottom = 547.0
+color = Color(0.568532, 0.670597, 0.995948, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Questions/QuestionButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_4b5bt")
+bbcode_enabled = true
+fit_content = true
+
+[node name="Button2" type="Button" parent="Questions/QuestionButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="QuestionButton3" type="ColorRect" parent="Questions"]
+offset_left = 177.0
+offset_top = 560.0
+offset_right = 975.0
+offset_bottom = 627.0
+color = Color(0.568627, 0.670588, 0.996078, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Questions/QuestionButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_4b5bt")
+bbcode_enabled = true
+fit_content = true
+
+[node name="Button3" type="Button" parent="Questions/QuestionButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Trust" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="ColorRect" parent="Trust"]
+offset_left = 476.0
+offset_top = 395.0
+offset_right = 676.0
+offset_bottom = 462.0
+color = Color(0.568627, 0.670588, 0.996078, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Trust/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_xb6ac")
+text = "Do you trust them??"
+
+[node name="ColorRect" type="ColorRect" parent="Trust"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 500.0
+offset_right = 500.0
+offset_bottom = 567.0
+color = Color(0.568627, 0.670588, 0.996078, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Trust/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_q0vfa")
+text = "YES"
+
+[node name="YesButton" type="Button" parent="Trust/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+flat = true
+
+[node name="ColorRect2" type="ColorRect" parent="Trust"]
+layout_mode = 0
+offset_left = 652.0
+offset_top = 500.0
+offset_right = 852.0
+offset_bottom = 567.0
+color = Color(0.568627, 0.670588, 0.996078, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Trust/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_d2tuu")
+text = "NO"
+
+[node name="NoButton" type="Button" parent="Trust/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="button_down" from="Questions/QuestionButton1/Button1" to="." method="_on_button_1_down"]
+[connection signal="button_down" from="Questions/QuestionButton2/Button2" to="." method="_on_button_2_down"]
+[connection signal="button_down" from="Questions/QuestionButton3/Button3" to="." method="_on_button_3_down"]
+[connection signal="button_down" from="Trust/ColorRect/YesButton" to="." method="_on_yes_button_down"]
+[connection signal="button_down" from="Trust/ColorRect2/NoButton" to="." method="_on_no_button_down"]
