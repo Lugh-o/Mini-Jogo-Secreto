@@ -1,0 +1,110 @@
+[
+    {
+        "theme": "oceanCurrents",
+        "question": "The currents have been a bit treacherous lately, don’t you think?",
+        "answer": {
+            "trustworthy": "Treacherous for some, but for those who know how to navigate, they’re allies.",
+            "untrustworthy": "Yeah, you can never trust the currents."
+        },
+        "reply": {
+            "trustworthy": "Thanks for trusting us. Navigators like you always find the best treasures!",
+            "untrustworthy": "Sorry, because of the strong currents, we are closing the store for now."
+        }
+    },
+    {
+        "theme": "oceanCurrents",
+        "question": "Always curious how the waters on the horizon seem calmer.",
+        "answer": {
+            "trustworthy": "They only seem calm. Those who know understand it’s where the currents meet.",
+            "untrustworthy": "Yeah, they do seem calm. I’ve never swum that far to check."
+        },
+        "reply": {
+            "trustworthy": "Thank you! With your knowledge, calm horizons hold no mysteries.",
+            "untrustworthy": "Hmm, seems you’ve never been there. Maybe it’s better to stay safe on shore."
+        }
+    },
+    {
+        "theme": "oceanCurrents",
+        "question": "The giant turtles haven’t passed by here in a while; I heard they changed their route.",
+        "answer": {
+            "trustworthy": "They did, but they always leave something for the right contacts.",
+            "untrustworthy": "They changed? That’s strange, I thought they always followed the same route."
+        },
+        "reply": {
+            "trustworthy": "Your insight is appreciated! May the turtles always bring you fortune.",
+            "untrustworthy": "Oh, you don’t seem familiar with their ways. Maybe this isn’t the right place for you."
+        }
+    },
+    {
+        "theme": "rareResources",
+        "question": "I got some golden carps, but no one around here seems interested.",
+        "answer": {
+            "trustworthy": "Maybe it’s because they don’t stand out much, but those who know value them.",
+            "untrustworthy": "Golden carps? I don’t know, I think people prefer more common fish."
+        },
+        "reply": {
+            "trustworthy": "Your appreciation for rare finds is always welcome here. Thank you!",
+            "untrustworthy": "Hmm, if common fish are your thing, perhaps another shop suits you better."
+        }
+    },
+    {
+        "theme": "rareResources",
+        "question": "Some folks are looking for whisper shells, but it’s rare to find a genuine one.",
+        "answer": {
+            "trustworthy": "Rare, but those who listen know the difference.",
+            "untrustworthy": "Oh, whisper shells? I didn’t even know that was a thing."
+        },
+        "reply": {
+            "trustworthy": "Thank you! Only those with keen ears find the true treasures.",
+            "untrustworthy": "If you don’t know about whisper shells, you’re probably in the wrong shop."
+        }
+    },
+    {
+        "theme": "rareResources",
+        "question": "If you’re into something exotic, I’ve heard fire algae are around.",
+        "answer": {
+            "trustworthy": "Interesting. Has a batch come in recently?",
+            "untrustworthy": "Fire algae? Sounds dangerous. Not something I’d look for."
+        },
+        "reply": {
+            "trustworthy": "Grateful to serve a connoisseur of the exotic. Thank you!",
+            "untrustworthy": "Ah, it seems exotic items aren’t your thing. Perhaps try somewhere more... ordinary."
+        }
+    },
+    {
+        "theme": "rumorsAndPlaces",
+        "question": "I heard they’ve been cleaning up the reefs on the west side. A lot of things were taken.",
+        "answer": {
+            "trustworthy": "Yes, but those who know where to look always find what they need.",
+            "untrustworthy": "That’s a shame. I hope they didn’t take too much good stuff."
+        },
+        "reply": {
+            "trustworthy": "Your expertise in seeking hidden treasures never ceases to amaze. Thank you!",
+            "untrustworthy": "If you’re worried about leftovers, maybe it’s best to stay away from the reefs."
+        }
+    },
+    {
+        "theme": "rumorsAndPlaces",
+        "question": "They say the deep-dark bazaar has vanished. Lots of things have disappeared.",
+        "answer": {
+            "trustworthy": "Those who know where to look can still find what they need.",
+            "untrustworthy": "I’ve never been to that bazaar. Sounds kind of sketchy, doesn’t it?"
+        },
+        "reply": {
+            "trustworthy": "Your insight ensures the deep-dark bazaar remains open for those who seek it. Thank you!",
+            "untrustworthy": "If it sounds sketchy to you, maybe you shouldn’t be asking about it."
+        }
+    },
+    {
+        "theme": "rumorsAndPlaces",
+        "question": "Some fish came by looking for small anchors. Not sure why they like them so much.",
+        "answer": {
+            "trustworthy": "Because what holds firm also carries secrets.",
+            "untrustworthy": "Small anchors? I don’t know, maybe it’s just for decoration?"
+        },
+        "reply": {
+            "trustworthy": "Thank you! Your understanding of the value of anchors is appreciated.",
+            "untrustworthy": "If decoration is all you see, perhaps you’re not ready for this conversation."
+        }
+    }
+]
