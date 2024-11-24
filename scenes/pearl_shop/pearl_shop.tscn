@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b60ut84td1f0e"]
+[gd_scene load_steps=8 format=3 uid="uid://b60ut84td1f0e"]
 
 [ext_resource type="Script" path="res://scenes/pearl_shop/pearl_shop.gd" id="1_u4r7i"]
+
+[sub_resource type="SystemFont" id="SystemFont_ub5nm"]
+font_names = PackedStringArray("Impact")
 
 [sub_resource type="SystemFont" id="SystemFont_jrkqa"]
 font_names = PackedStringArray("Impact")
@@ -30,10 +33,30 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.439516, 0.488277, 0.503068, 1)
 
+[node name="Title" type="ColorRect" parent="."]
+z_index = 10
+offset_left = 634.0
+offset_right = 1152.0
+offset_bottom = 77.0
+color = Color(0.366861, 0.629935, 0.192179, 1)
+
+[node name="TitleLabel" type="RichTextLabel" parent="Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_ub5nm")
+bbcode_enabled = true
+
 [node name="DialogueBox" type="ColorRect" parent="."]
 visible = false
+z_index = 10
 offset_left = 1.0
-offset_top = 232.0
+offset_top = 276.0
 offset_right = 1153.0
 offset_bottom = 362.0
 color = Color(0.568532, 0.670597, 0.995948, 1)
@@ -53,6 +76,8 @@ text = "TESTANDO DIÁLOGO"
 threaded = true
 
 [node name="Questions" type="Control" parent="."]
+visible = false
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,6 +175,7 @@ flat = true
 
 [node name="Trust" type="Control" parent="."]
 visible = false
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
