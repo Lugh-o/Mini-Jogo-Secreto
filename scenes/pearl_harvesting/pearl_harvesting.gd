@@ -54,8 +54,8 @@ func handle_tools(delta: float) -> void:
 			target_position_pliers = Vector2(276, 633)
 		else:
 			pliers.position = pliers.position.move_toward(target_position_pliers, 3000 * delta)
-			pliers.rotation = PI*5/6
-			target_position_pliers = Vector2(276, 533)
+			pliers.rotation = PI*10/11
+			target_position_pliers = Vector2(456, 563)
 
 	if is_spoon:
 		spoon.position = spoon.position.move_toward(get_global_mouse_position(), 3000 * delta)
@@ -64,7 +64,7 @@ func handle_tools(delta: float) -> void:
 	else:
 		spoon.position = spoon.position.move_toward(target_position_spoon, 3000 * delta)
 		spoon.rotation = PI*2/5
-		target_position_spoon = Vector2(576, 533)
+		target_position_spoon = Vector2(576, 633)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("clickDir") and not is_pearl_picked:

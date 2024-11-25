@@ -1,31 +1,35 @@
 [gd_scene load_steps=15 format=3 uid="uid://b60ut84td1f0e"]
 
 [ext_resource type="Script" path="res://scenes/pearl_shop/pearl_shop.gd" id="1_u4r7i"]
-[ext_resource type="PackedScene" uid="uid://g6p774x5qhaa" path="res://scenes/pearl_shop/custumers/gilly_eilish.tscn" id="2_iexdk"]
 [ext_resource type="Texture2D" uid="uid://dbytmx4aqr7dw" path="res://assets/peal_shop/shop_background.png" id="2_s8bvc"]
-[ext_resource type="PackedScene" uid="uid://bt208vfhgwob6" path="res://scenes/pearl_shop/custumers/eelton_john.tscn" id="3_fvkdd"]
-[ext_resource type="PackedScene" uid="uid://cd4beh7e5ev1b" path="res://scenes/pearl_shop/custumers/marlin_monroe.tscn" id="4_o65p6"]
-[ext_resource type="PackedScene" uid="uid://c7msvianf55qx" path="res://scenes/pearl_shop/custumers/sharkira.tscn" id="5_421ym"]
-[ext_resource type="PackedScene" uid="uid://b38hm2s8jp65y" path="res://scenes/pearl_shop/custumers/whale_smith.tscn" id="6_nnghw"]
+[ext_resource type="Texture2D" uid="uid://c82mjme1mvjb" path="res://assets/peal_shop/big_box.png" id="3_4eue1"]
+[ext_resource type="Texture2D" uid="uid://6f2w7vgnftyw" path="res://assets/peal_shop/dialogue_box.png" id="3_cs1wk"]
 [ext_resource type="Texture2D" uid="uid://duyv16twpyc6g" path="res://assets/peal_shop/shop_table.png" id="8_37pho"]
+[ext_resource type="Texture2D" uid="uid://coh3x3axn6inl" path="res://assets/peal_shop/small_box.png" id="11_n1cxn"]
 
 [sub_resource type="SystemFont" id="SystemFont_ub5nm"]
-font_names = PackedStringArray("Impact")
+font_names = PackedStringArray("Comic Sans MS")
 
 [sub_resource type="SystemFont" id="SystemFont_jrkqa"]
-font_names = PackedStringArray("Impact")
+font_names = PackedStringArray("Comic Sans MS")
 
 [sub_resource type="SystemFont" id="SystemFont_4b5bt"]
-font_names = PackedStringArray("Impact")
+font_names = PackedStringArray("Comic Sans MS")
 
-[sub_resource type="SystemFont" id="SystemFont_xb6ac"]
-font_names = PackedStringArray("Impact")
+[sub_resource type="SystemFont" id="SystemFont_hfyrt"]
+font_names = PackedStringArray("Comic Sans MS")
 
-[sub_resource type="SystemFont" id="SystemFont_q0vfa"]
-font_names = PackedStringArray("Impact")
+[sub_resource type="SystemFont" id="SystemFont_b8mrg"]
+font_names = PackedStringArray("Comic Sans MS")
 
-[sub_resource type="SystemFont" id="SystemFont_d2tuu"]
-font_names = PackedStringArray("Impact")
+[sub_resource type="SystemFont" id="SystemFont_t00e8"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="SystemFont" id="SystemFont_2hkqw"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="SystemFont" id="SystemFont_mykcw"]
+font_names = PackedStringArray("Comic Sans MS")
 
 [node name="PearlShop" type="Node2D"]
 script = ExtResource("1_u4r7i")
@@ -34,69 +38,61 @@ script = ExtResource("1_u4r7i")
 position = Vector2(576, 324)
 texture = ExtResource("2_s8bvc")
 
-[node name="Title" type="ColorRect" parent="."]
+[node name="Title" type="Node2D" parent="."]
 z_index = 10
-offset_left = 634.0
-offset_right = 1152.0
-offset_bottom = 77.0
-color = Color(0.366861, 0.629935, 0.192179, 1)
+
+[node name="Sprite" type="Sprite2D" parent="Title"]
+position = Vector2(971, 64)
+scale = Vector2(0.563333, 0.563333)
+texture = ExtResource("3_4eue1")
 
 [node name="TitleLabel" type="RichTextLabel" parent="Title"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1.0
+offset_left = 821.0
+offset_top = 27.0
+offset_right = 1124.0
+offset_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_ub5nm")
 bbcode_enabled = true
+text = "QWWEQWEQWE"
 
-[node name="DialogueBox" type="ColorRect" parent="."]
-z_index = 10
-offset_left = 1.0
-offset_top = 276.0
-offset_right = 1153.0
-offset_bottom = 362.0
-color = Color(0.568532, 0.670597, 0.995948, 1)
+[node name="CustumerDialogueBox" type="Node2D" parent="."]
+visible = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DialogueBox"]
+[node name="CustumerDialogueBox" type="Sprite2D" parent="CustumerDialogueBox"]
+position = Vector2(213, 179)
+texture = ExtResource("3_cs1wk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CustumerDialogueBox"]
 clip_contents = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 87.0
+offset_top = 132.0
+offset_right = 328.0
+offset_bottom = 218.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_jrkqa")
 bbcode_enabled = true
-text = "TESTANDO DIÁLOGO"
+text = "TESTANDO DIÁLOGOASDASD"
 threaded = true
 
 [node name="Custumers" type="Node2D" parent="."]
-
-[node name="GillyEilish" parent="Custumers" instance=ExtResource("2_iexdk")]
-position = Vector2(-487, 254)
-
-[node name="Sharkira" parent="Custumers" instance=ExtResource("5_421ym")]
-position = Vector2(-967, 184)
-
-[node name="EeltonJohn" parent="Custumers" instance=ExtResource("3_fvkdd")]
-position = Vector2(-1839, 192)
-
-[node name="MarlinMonroe" parent="Custumers" instance=ExtResource("4_o65p6")]
-position = Vector2(-1418, 152)
-
-[node name="WhaleSmith" parent="Custumers" instance=ExtResource("6_nnghw")]
-position = Vector2(-2323, 187)
 
 [node name="Table" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 texture = ExtResource("8_37pho")
 
 [node name="Questions" type="Control" parent="."]
+visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -109,21 +105,21 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="QuestionButton1" type="ColorRect" parent="Questions"]
-layout_mode = 0
-offset_left = 177.0
-offset_top = 400.0
-offset_right = 975.0
-offset_bottom = 467.0
-color = Color(0.568532, 0.670597, 0.995948, 1)
+[node name="Question1" type="Node2D" parent="Questions"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Questions/QuestionButton1"]
-layout_mode = 1
+[node name="QuestionButton1" type="Sprite2D" parent="Questions/Question1"]
+position = Vector2(836, 444.5)
+scale = Vector2(1, 0.325)
+texture = ExtResource("3_4eue1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Questions/Question1"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1.0
-offset_bottom = 105.0
+offset_left = 564.0
+offset_top = 424.0
+offset_right = 1115.0
+offset_bottom = 470.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -132,58 +128,65 @@ bbcode_enabled = true
 text = "teste"
 fit_content = true
 
-[node name="Button1" type="Button" parent="Questions/QuestionButton1"]
-layout_mode = 1
+[node name="Button1" type="Button" parent="Questions/Question1"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 554.0
+offset_top = 410.0
+offset_right = 1126.0
+offset_bottom = 479.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="QuestionButton2" type="ColorRect" parent="Questions"]
-layout_mode = 0
-offset_left = 177.0
-offset_top = 480.0
-offset_right = 975.0
-offset_bottom = 547.0
-color = Color(0.568532, 0.670597, 0.995948, 1)
+[node name="Question2" type="Node2D" parent="Questions"]
+position = Vector2(840, 524.5)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Questions/QuestionButton2"]
-layout_mode = 1
-anchors_preset = 15
+[node name="QuestionButton2" type="Sprite2D" parent="Questions/Question2"]
+scale = Vector2(1, 0.325)
+texture = ExtResource("3_4eue1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Questions/Question2"]
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -272.0
+offset_top = -21.0
+offset_right = 278.0
+offset_bottom = 25.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = SubResource("SystemFont_4b5bt")
+theme_override_fonts/normal_font = SubResource("SystemFont_hfyrt")
 bbcode_enabled = true
-text = "teste"
-fit_content = true
+text = "asdasdasdasddasd"
 
-[node name="Button2" type="Button" parent="Questions/QuestionButton2"]
-layout_mode = 1
+[node name="Button2" type="Button" parent="Questions/Question2"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -273.0
+offset_top = -32.0
+offset_right = 288.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="QuestionButton3" type="ColorRect" parent="Questions"]
-layout_mode = 0
-offset_left = 177.0
-offset_top = 560.0
-offset_right = 975.0
-offset_bottom = 627.0
-color = Color(0.568627, 0.670588, 0.996078, 1)
+[node name="Question3" type="Node2D" parent="Questions"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Questions/QuestionButton3"]
-layout_mode = 1
+[node name="QuestionButton3" type="Sprite2D" parent="Questions/Question3"]
+position = Vector2(845, 607.5)
+scale = Vector2(1, 0.325)
+texture = ExtResource("3_4eue1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Questions/Question3"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 577.0
+offset_top = 587.0
+offset_right = 1125.0
+offset_bottom = 630.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -192,11 +195,14 @@ bbcode_enabled = true
 text = "teste"
 fit_content = true
 
-[node name="Button3" type="Button" parent="Questions/QuestionButton3"]
-layout_mode = 1
+[node name="Button3" type="Button" parent="Questions/Question3"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 571.0
+offset_top = 583.0
+offset_right = 1135.0
+offset_bottom = 643.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
@@ -209,84 +215,98 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Title" type="ColorRect" parent="Trust"]
-layout_mode = 0
-offset_left = 476.0
-offset_top = 395.0
-offset_right = 676.0
-offset_bottom = 462.0
-color = Color(0.568627, 0.670588, 0.996078, 1)
+[node name="TitleNode" type="Node2D" parent="Trust"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Trust/Title"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Sprite2D" type="Sprite2D" parent="Trust/TitleNode"]
+position = Vector2(568, 423)
+scale = Vector2(0.4875, 0.353333)
+texture = ExtResource("11_n1cxn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Trust/TitleNode"]
+offset_left = 485.0
+offset_top = 402.0
+offset_right = 651.0
+offset_bottom = 442.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = SubResource("SystemFont_xb6ac")
-text = "Do you trust them??"
+theme_override_fonts/normal_font = SubResource("SystemFont_b8mrg")
+bbcode_enabled = true
+text = "[center]Do you trust them?[/center]"
 
-[node name="ColorRect" type="ColorRect" parent="Trust"]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 500.0
-offset_right = 500.0
-offset_bottom = 567.0
-color = Color(0.568627, 0.670588, 0.996078, 1)
+[node name="YesNode" type="Node2D" parent="Trust"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Trust/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Sprite2D" type="Sprite2D" parent="Trust/YesNode"]
+position = Vector2(401, 541)
+scale = Vector2(0.506667, 0.506667)
+texture = ExtResource("11_n1cxn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Trust/YesNode"]
+offset_left = 316.0
+offset_top = 510.0
+offset_right = 480.0
+offset_bottom = 572.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = SubResource("SystemFont_q0vfa")
-text = "YES"
+theme_override_fonts/normal_font = SubResource("SystemFont_t00e8")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]Yes[/center]
+"
 
-[node name="YesButton" type="Button" parent="Trust/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="Button" type="Button" parent="Trust/YesNode"]
+offset_left = 313.0
+offset_top = 492.0
+offset_right = 485.0
+offset_bottom = 586.0
 flat = true
 
-[node name="ColorRect2" type="ColorRect" parent="Trust"]
-layout_mode = 0
-offset_left = 652.0
-offset_top = 500.0
-offset_right = 852.0
-offset_bottom = 567.0
-color = Color(0.568627, 0.670588, 0.996078, 1)
+[node name="NoNode" type="Node2D" parent="Trust"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Trust/ColorRect2"]
-layout_mode = 1
+[node name="Sprite2D" type="Sprite2D" parent="Trust/NoNode"]
+position = Vector2(754, 544)
+scale = Vector2(0.507, 0.507)
+texture = ExtResource("11_n1cxn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Trust/NoNode"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 668.0
+offset_top = 510.0
+offset_right = 837.0
+offset_bottom = 579.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = SubResource("SystemFont_d2tuu")
-text = "NO"
+theme_override_fonts/normal_font = SubResource("SystemFont_2hkqw")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]No[/center]"
 
-[node name="NoButton" type="Button" parent="Trust/ColorRect2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Button" type="Button" parent="Trust/NoNode"]
+offset_left = 668.0
+offset_top = 494.0
+offset_right = 832.0
+offset_bottom = 582.0
 flat = true
 
-[connection signal="button_down" from="Questions/QuestionButton1/Button1" to="." method="_on_button_1_down"]
-[connection signal="button_down" from="Questions/QuestionButton2/Button2" to="." method="_on_button_2_down"]
-[connection signal="button_down" from="Questions/QuestionButton3/Button3" to="." method="_on_button_3_down"]
-[connection signal="button_down" from="Trust/ColorRect/YesButton" to="." method="_on_yes_button_down"]
-[connection signal="button_down" from="Trust/ColorRect2/NoButton" to="." method="_on_no_button_down"]
+[node name="PlayerDialogueBox" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerDialogueBox"]
+position = Vector2(226, 457)
+scale = Vector2(1.08, 1.08)
+texture = ExtResource("3_cs1wk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerDialogueBox"]
+offset_left = 90.0
+offset_top = 404.0
+offset_right = 353.0
+offset_bottom = 503.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_mykcw")
+bbcode_enabled = true
+
+[connection signal="button_down" from="Questions/Question1/Button1" to="." method="_on_button_1_down"]
+[connection signal="button_down" from="Questions/Question2/Button2" to="." method="_on_button_2_down"]
+[connection signal="button_down" from="Questions/Question3/Button3" to="." method="_on_button_3_down"]
+[connection signal="button_down" from="Trust/YesNode/Button" to="." method="_on_yes_button_down"]
+[connection signal="button_down" from="Trust/NoNode/Button" to="." method="_on_no_button_down"]
