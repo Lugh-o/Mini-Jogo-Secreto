@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn0rrygs4cr2v"]
+
+[ext_resource type="Texture2D" uid="uid://qwhfx4bkb6kl" path="res://assets/pearl_harvesting/oyster_2_closed.PNG" id="1_axtvm"]
+
+[node name="Oyster2Closed" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_axtvm")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" groups=["oyster_closed"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Area2D"]
+polygon = PackedVector2Array(184, -6, 138, -5, 97, 102, 217, 108, 237, 2)

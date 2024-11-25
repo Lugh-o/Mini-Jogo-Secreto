@@ -1,6 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b60ut84td1f0e"]
+[gd_scene load_steps=15 format=3 uid="uid://b60ut84td1f0e"]
 
 [ext_resource type="Script" path="res://scenes/pearl_shop/pearl_shop.gd" id="1_u4r7i"]
+[ext_resource type="PackedScene" uid="uid://g6p774x5qhaa" path="res://scenes/pearl_shop/custumers/gilly_eilish.tscn" id="2_iexdk"]
+[ext_resource type="Texture2D" uid="uid://dbytmx4aqr7dw" path="res://assets/peal_shop/shop_background.png" id="2_s8bvc"]
+[ext_resource type="PackedScene" uid="uid://bt208vfhgwob6" path="res://scenes/pearl_shop/custumers/eelton_john.tscn" id="3_fvkdd"]
+[ext_resource type="PackedScene" uid="uid://cd4beh7e5ev1b" path="res://scenes/pearl_shop/custumers/marlin_monroe.tscn" id="4_o65p6"]
+[ext_resource type="PackedScene" uid="uid://c7msvianf55qx" path="res://scenes/pearl_shop/custumers/sharkira.tscn" id="5_421ym"]
+[ext_resource type="PackedScene" uid="uid://b38hm2s8jp65y" path="res://scenes/pearl_shop/custumers/whale_smith.tscn" id="6_nnghw"]
+[ext_resource type="Texture2D" uid="uid://duyv16twpyc6g" path="res://assets/peal_shop/shop_table.png" id="8_37pho"]
 
 [sub_resource type="SystemFont" id="SystemFont_ub5nm"]
 font_names = PackedStringArray("Impact")
@@ -23,15 +30,9 @@ font_names = PackedStringArray("Impact")
 [node name="PearlShop" type="Node2D"]
 script = ExtResource("1_u4r7i")
 
-[node name="Background" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.439516, 0.488277, 0.503068, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_s8bvc")
 
 [node name="Title" type="ColorRect" parent="."]
 z_index = 10
@@ -53,7 +54,6 @@ theme_override_fonts/normal_font = SubResource("SystemFont_ub5nm")
 bbcode_enabled = true
 
 [node name="DialogueBox" type="ColorRect" parent="."]
-visible = false
 z_index = 10
 offset_left = 1.0
 offset_top = 276.0
@@ -75,8 +75,28 @@ bbcode_enabled = true
 text = "TESTANDO DIÁLOGO"
 threaded = true
 
+[node name="Custumers" type="Node2D" parent="."]
+
+[node name="GillyEilish" parent="Custumers" instance=ExtResource("2_iexdk")]
+position = Vector2(-487, 254)
+
+[node name="Sharkira" parent="Custumers" instance=ExtResource("5_421ym")]
+position = Vector2(-967, 184)
+
+[node name="EeltonJohn" parent="Custumers" instance=ExtResource("3_fvkdd")]
+position = Vector2(-1839, 192)
+
+[node name="MarlinMonroe" parent="Custumers" instance=ExtResource("4_o65p6")]
+position = Vector2(-1418, 152)
+
+[node name="WhaleSmith" parent="Custumers" instance=ExtResource("6_nnghw")]
+position = Vector2(-2323, 187)
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("8_37pho")
+
 [node name="Questions" type="Control" parent="."]
-visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -90,6 +110,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="QuestionButton1" type="ColorRect" parent="Questions"]
+layout_mode = 0
 offset_left = 177.0
 offset_top = 400.0
 offset_right = 975.0
@@ -101,11 +122,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_4b5bt")
 bbcode_enabled = true
+text = "teste"
 fit_content = true
 
 [node name="Button1" type="Button" parent="Questions/QuestionButton1"]
@@ -118,6 +142,7 @@ grow_vertical = 2
 flat = true
 
 [node name="QuestionButton2" type="ColorRect" parent="Questions"]
+layout_mode = 0
 offset_left = 177.0
 offset_top = 480.0
 offset_right = 975.0
@@ -134,6 +159,7 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_4b5bt")
 bbcode_enabled = true
+text = "teste"
 fit_content = true
 
 [node name="Button2" type="Button" parent="Questions/QuestionButton2"]
@@ -146,6 +172,7 @@ grow_vertical = 2
 flat = true
 
 [node name="QuestionButton3" type="ColorRect" parent="Questions"]
+layout_mode = 0
 offset_left = 177.0
 offset_top = 560.0
 offset_right = 975.0
@@ -162,6 +189,7 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_4b5bt")
 bbcode_enabled = true
+text = "teste"
 fit_content = true
 
 [node name="Button3" type="Button" parent="Questions/QuestionButton3"]
@@ -182,6 +210,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Title" type="ColorRect" parent="Trust"]
+layout_mode = 0
 offset_left = 476.0
 offset_top = 395.0
 offset_right = 676.0

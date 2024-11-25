@@ -1,0 +1,171 @@
+[gd_scene load_steps=14 format=3 uid="uid://cjakybops5iu0"]
+
+[ext_resource type="Script" path="res://scenes/pearl_cleaning/pearl_cleaning.gd" id="1_28cg8"]
+[ext_resource type="Texture2D" uid="uid://dii8tro3k8lfj" path="res://assets/pearl_cleaning/brush.png" id="2_arbdv"]
+[ext_resource type="Texture2D" uid="uid://b2ytg2jprbwr2" path="res://assets/pearl/pearl.png" id="2_h1y6v"]
+[ext_resource type="Texture2D" uid="uid://clchqu4yf76sj" path="res://assets/pearl_cleaning/polish.png" id="3_010op"]
+[ext_resource type="Texture2D" uid="uid://bo0sbcfp0e7eg" path="res://assets/pearl_cleaning/matte.png" id="3_20idp"]
+[ext_resource type="Texture2D" uid="uid://ddtlk8ki3m5w8" path="res://assets/pearl_cleaning/dirt_1.png" id="3_njlla"]
+[ext_resource type="Texture2D" uid="uid://dunvyfov0mjie" path="res://assets/pearl_cleaning/ducttape.png" id="4_a0i1c"]
+[ext_resource type="Texture2D" uid="uid://l1vcurpklair" path="res://assets/pearl_cleaning/dirt_2.png" id="4_wfkkh"]
+[ext_resource type="Texture2D" uid="uid://vja6qdh2nq0" path="res://assets/pearl_cleaning/dirt_3.png" id="5_fhfbp"]
+[ext_resource type="PackedScene" uid="uid://b81u1ej53qrye" path="res://scenes/pearl_cleaning/crack/crack_1.tscn" id="7_gflsw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glqwu"]
+size = Vector2(1305.46, 1381.84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6o4po"]
+size = Vector2(409.91, 391.892)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxbem"]
+size = Vector2(492.5, 155)
+
+[node name="PearlCleaning" type="Node2D"]
+script = ExtResource("1_28cg8")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.439516, 0.488277, 0.503068, 1)
+
+[node name="Pearl" type="Sprite2D" parent="."]
+position = Vector2(576, 229)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1y6v")
+
+[node name="Matte" type="Sprite2D" parent="Pearl"]
+texture = ExtResource("3_20idp")
+
+[node name="Area2D" type="Area2D" parent="Pearl/Matte" groups=["matte"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pearl/Matte/Area2D"]
+polygon = PackedVector2Array(-104, -192, -158, -154, -176, -84, -158, -18, -108, 32, -30, 36, 20, -6, 30, -76, 14, -134, -34, -188)
+
+[node name="Dirt1" type="Sprite2D" parent="Pearl"]
+texture = ExtResource("3_njlla")
+
+[node name="Area2D" type="Area2D" parent="Pearl/Dirt1" groups=["dirt"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pearl/Dirt1/Area2D"]
+polygon = PackedVector2Array(122, -210, 196, -142, 202, -88, 156, -112, 122, -28, 82, -22, 72, -58, 86, -86, 110, -112, 104, -130, 74, -132, 84, -148, 118, -158, 92, -188, 68, -214)
+
+[node name="Dirt2" type="Sprite2D" parent="Pearl"]
+texture = ExtResource("4_wfkkh")
+
+[node name="Area2D" type="Area2D" parent="Pearl/Dirt2" groups=["dirt"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pearl/Dirt2/Area2D"]
+polygon = PackedVector2Array(38, -78, 22, -52, 40, 30, -16, 62, -40, 88, -4, 94, 50, 66, 60, 108, 76, 88, 70, 58, 144, 80, 158, 62, 136, 32, 98, 42, 122, -8, 106, -26, 78, 14, 60, -68)
+
+[node name="Dirt3" type="Sprite2D" parent="Pearl"]
+texture = ExtResource("5_fhfbp")
+
+[node name="Area2D" type="Area2D" parent="Pearl/Dirt3" groups=["dirt"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pearl/Dirt3/Area2D"]
+polygon = PackedVector2Array(-182, 154, -130, 202, -80, 188, -70, 168, -100, 170, -96, 144, -122, 152, -110, 86, -128, 36, -144, 86, -148, 138, -176, 108, -166, 152)
+
+[node name="Crack" parent="Pearl" instance=ExtResource("7_gflsw")]
+position = Vector2(-1152, -458)
+scale = Vector2(2, 2)
+
+[node name="Polish" type="Sprite2D" parent="."]
+position = Vector2(876, 805)
+scale = Vector2(0.144011, 0.144011)
+texture = ExtResource("3_010op")
+
+[node name="PolishButton" type="Button" parent="Polish"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -743.0
+offset_right = -750.0
+offset_bottom = -743.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Area2D" type="Area2D" parent="Polish"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polish/Area2D"]
+position = Vector2(-76.3833, 38.1904)
+shape = SubResource("RectangleShape2D_glqwu")
+
+[node name="Tape" type="Sprite2D" parent="."]
+position = Vector2(576, 805)
+scale = Vector2(0.444, 0.444)
+texture = ExtResource("4_a0i1c")
+
+[node name="TapeButton" type="Button" parent="Tape"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = -250.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Area2D" type="Area2D" parent="Tape"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tape/Area2D"]
+position = Vector2(0, -2.25244)
+shape = SubResource("RectangleShape2D_6o4po")
+
+[node name="Brush" type="Sprite2D" parent="."]
+position = Vector2(276, 805)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_arbdv")
+
+[node name="BrushButton" type="Button" parent="Brush"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = -250.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Area2D" type="Area2D" parent="Brush"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brush/Area2D"]
+position = Vector2(1.25, -2.5)
+shape = SubResource("RectangleShape2D_vxbem")
+
+[node name="Tooltip" type="ColorRect" parent="."]
+offset_left = 54.0
+offset_top = 312.0
+offset_right = 373.0
+offset_bottom = 411.0
+color = Color(0, 0.844973, 0.820462, 1)
+
+[node name="Label" type="RichTextLabel" parent="Tooltip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Clean to pearl to increase its value!
+Left click: pick up tool
+Right click: release tool"
+
+[connection signal="button_down" from="Polish/PolishButton" to="." method="_on_polish_button_down"]
+[connection signal="area_entered" from="Polish/Area2D" to="." method="_on_polish_area_entered"]
+[connection signal="button_down" from="Tape/TapeButton" to="." method="_on_tape_button_down"]
+[connection signal="area_entered" from="Tape/Area2D" to="." method="_on_tape_area_entered"]
+[connection signal="button_down" from="Brush/BrushButton" to="." method="_on_brush_button_down"]
+[connection signal="area_entered" from="Brush/Area2D" to="." method="_on_brush_area_entered"]

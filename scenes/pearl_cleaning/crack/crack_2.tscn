@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn5fmo1glerim"]
+
+[ext_resource type="Texture2D" uid="uid://xuajv3v0xmqq" path="res://assets/pearl_cleaning/crack_2.png" id="1_oi86k"]
+[ext_resource type="Texture2D" uid="uid://0pn7pxgymhas" path="res://assets/pearl_cleaning/tape_2.png" id="2_7ak2a"]
+
+[node name="Crack2" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oi86k")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" groups=["crack"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Area2D"]
+position = Vector2(177, 63)
+rotation = 2.35619
+polygon = PackedVector2Array(-161.221, 181.019, -29.6989, 130.108, -9.19266, 78.4888, -45.9621, 30.4054, -161.928, 157.684)
+
+[node name="Tape" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_7ak2a")

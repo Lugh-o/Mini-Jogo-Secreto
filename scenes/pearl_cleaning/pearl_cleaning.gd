@@ -1,27 +1,33 @@
 class_name PearlCleaning
 extends Node2D
 
-const dirt: PackedScene = preload("res://scenes/pearl_cleaning/dirt/dirt.tscn")
-const shine: PackedScene = preload("res://scenes/pearl_cleaning/shine/shine.tscn")
-const crack: PackedScene = preload("res://scenes/pearl_cleaning/crack/crack.tscn")
-const matte: PackedScene = preload("res://scenes/pearl_cleaning/matte/matte.tscn")
+@onready var main_scene: PackedScene = preload("res://scenes/main_scene/main_scene.tscn")
 
 @onready var brush: Sprite2D = $Brush
 @onready var tape: Sprite2D = $Tape
 @onready var polish: Sprite2D = $Polish
 @onready var pearl: Sprite2D = $Pearl
+@onready var shine: Sprite2D = $Shine
 
 var target_pos_brush: Vector2
 var target_pos_tape: Vector2
 var target_pos_polish: Vector2
 
+const crack_1: PackedScene = preload("res://scenes/pearl_cleaning/crack/crack_1.tscn")
+const crack_2: PackedScene = preload("res://scenes/pearl_cleaning/crack/crack_2.tscn")
+const crack_3: PackedScene = preload("res://scenes/pearl_cleaning/crack/crack_3.tscn")
+var crack_array = [crack_1, crack_2, crack_3]
+var cracks
+
 var is_brush = false
 var is_tape = false
 var is_polish = false
 
+var dirt_cleaned: int = 0
+var is_polished: bool = false
+var cracks_taped: int = 0
+
 func _ready() -> void:
-	create_dirt()
-	create_matte()
 	create_crack()
 	position_tools()
 
@@ -56,36 +62,13 @@ func position_tools() -> void:
 	target_pos_tape = Vector2(tape.position.x, 633)
 	target_pos_polish = Vector2(polish.position.x, 633)
 
-func create_dirt() -> void:
-	for i in range(randi_range(5, 10)):
-		var dirtInstance = dirt.instantiate()
-		dirtInstance.position.x = randi_range(-150, 150) 
-		dirtInstance.position.y = randi_range(-150, 150)
-		dirtInstance.rotate(randi_range(0,180))
-		pearl.add_child(dirtInstance)
-
 func create_crack() -> void:
-	var crackInstance = crack.instantiate()
-	crackInstance.position.x = randi_range(-150, 150) 
-	crackInstance.position.y = randi_range(-150, 150)
-	crackInstance.rotate(randi_range(0,180))
-	pearl.add_child(crackInstance)
+	cracks = Globals.crack_amount
+	if cracks > 3: cracks = 3
 
-func create_matte() -> void:
-	for i in range(randi_range(3, 5)):
-		var matteInstance = matte.instantiate()
-		matteInstance.position.x = randi_range(-150, 150) 
-		matteInstance.position.y = randi_range(-150, 150)
-		matteInstance.rotate(randi_range(0,180))
-		pearl.add_child(matteInstance)
-
-func create_shine() -> void:
-	for i in range(randi_range(3, 5)):
-		var shineInstance = shine.instantiate()
-		shineInstance.position.x = randi_range(-150, 150) 
-		shineInstance.position.y = randi_range(-150, 150)
-		shineInstance.rotate(randi_range(0,180))
-		pearl.add_child(shineInstance)
+	for i in range(cracks):
+		var crackInstance: Node2D = crack_array[i].instantiate()
+		pearl.add_child(crackInstance)
 
 func _on_polish_button_down() -> void:	
 	is_polish = true
@@ -103,16 +86,19 @@ func _on_brush_button_down() -> void:
 	is_polish = false
 
 func _on_brush_area_entered(area: Area2D) -> void:
-	if area.is_in_group("dirt"):
-		area.get_parent().get_parent().queue_free()
+	if area.is_in_group("dirt") and area.get_parent().visible == true:
+		area.get_parent().visible = false
+		dirt_cleaned += 1
 
 func _on_tape_area_entered(area: Area2D) -> void:
-	if area.is_in_group("crack"):
-		area.get_parent().get_parent().queue_free()
+	if area.is_in_group("crack") and area.get_parent().get_parent().get_child(1).visible == false:
+		area.get_parent().get_parent().get_child(1).visible = true
+		cracks_taped += 1
 
 func _on_polish_area_entered(area: Area2D) -> void:
-	if area.is_in_group("matte"):
-		area.get_parent().get_parent().queue_free()
+	if area.is_in_group("matte") and area.get_parent().visible == true:
+		area.get_parent().visible = false
+		is_polished = true
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("clickDir"):
@@ -121,7 +107,12 @@ func _input(event: InputEvent) -> void:
 		is_tape = false
 
 func check_if_clean() -> void:
-	if pearl.get_children().is_empty():
-		create_shine()
+	var is_cleaned: bool = is_polished and dirt_cleaned == 3 and cracks_taped == cracks
+	if is_cleaned:
+		shine.visible = true
+		Globals.pearl_amount += 1
+		Globals.crack_amount = 0
+
 		# OVERLAY DE CONCLUIDO
-		# TRANSIÇÃO PRA MAIN SCENE
+		await get_tree().create_timer(3).timeout
+		get_tree().change_scene_to_packed(main_scene)

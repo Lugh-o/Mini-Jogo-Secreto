@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b38hm2s8jp65y"]
+
+[ext_resource type="Texture2D" uid="uid://braf7h2ocgcue" path="res://assets/peal_shop/custumers/whale_smith.png" id="1_u0qx1"]
+
+[node name="WhaleSmith" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u0qx1")

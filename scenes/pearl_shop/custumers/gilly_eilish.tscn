@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://g6p774x5qhaa"]
+
+[ext_resource type="Texture2D" uid="uid://b7yu2pc5rmbi7" path="res://assets/peal_shop/custumers/gilly_eilish.png" id="1_up73k"]
+
+[node name="GillyEilish" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_up73k")

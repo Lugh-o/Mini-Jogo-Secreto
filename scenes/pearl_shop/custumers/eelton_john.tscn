@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt208vfhgwob6"]
+
+[ext_resource type="Texture2D" uid="uid://cykfva83upr5p" path="res://assets/peal_shop/custumers/eelton_john.png" id="1_4c8ie"]
+
+[node name="EeltonJohn" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4c8ie")

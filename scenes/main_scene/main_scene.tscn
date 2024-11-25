@@ -1,38 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjbkn1revra71"]
+[gd_scene load_steps=7 format=3 uid="uid://bjbkn1revra71"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/main_scene.gd" id="1_oyh4y"]
 [ext_resource type="Texture2D" uid="uid://b10we274quci6" path="res://assets/controlls/arrow-right-solid.svg" id="2_8gl78"]
+[ext_resource type="Texture2D" uid="uid://bs33kxhvxebgv" path="res://assets/pearl_harvesting/pearl_harvesting.png" id="2_hl0wh"]
+[ext_resource type="Texture2D" uid="uid://1cunfuogxc24" path="res://assets/pearl_cleaning/pearl_cleaning_background.png" id="2_iri82"]
+[ext_resource type="Texture2D" uid="uid://dbytmx4aqr7dw" path="res://assets/peal_shop/shop_background.png" id="3_e43qg"]
 [ext_resource type="Script" path="res://Scripts/Interactables.cs" id="3_rfoeh"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_oyh4y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(-576, 324)
 position_smoothing_enabled = true
 
 [node name="Background" type="Sprite2D" parent="."]
 
-[node name="Room1" type="ColorRect" parent="Background"]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.0373088, 0.480752, 0.709071, 1)
+[node name="PearlHarvesting" type="Sprite2D" parent="Background"]
+position = Vector2(-576, 324)
+texture = ExtResource("2_hl0wh")
 
-[node name="Room2" type="ColorRect" parent="Background"]
-offset_left = 1152.0
-offset_right = 2304.0
-offset_bottom = 648.0
-color = Color(0, 0.517998, 0.514223, 1)
+[node name="PearlCleaning" type="Sprite2D" parent="Background"]
+position = Vector2(576, 324)
+texture = ExtResource("2_iri82")
 
-[node name="Room3" type="ColorRect" parent="Background"]
-offset_left = -1152.0
-offset_bottom = 648.0
-color = Color(7.21961e-07, 0.529794, 0.417895, 1)
-
-[node name="Room4" type="ColorRect" parent="Background"]
-offset_top = -648.0
-offset_right = 1152.0
-color = Color(0.422624, 0.272308, 1, 1)
+[node name="Shop" type="Sprite2D" parent="Background"]
+position = Vector2(1728, 324)
+texture = ExtResource("3_e43qg")
 
 [node name="Control" type="Node2D" parent="."]
 
@@ -70,37 +64,31 @@ offset_bottom = 792.0
 scale = Vector2(0.2, 0.2)
 icon = ExtResource("2_8gl78")
 
-[node name="1to4Button" type="Button" parent="Control"]
-offset_left = 525.0
-offset_top = 92.0
-offset_right = 981.0
-offset_bottom = 612.0
-rotation = -1.5708
-scale = Vector2(0.2, 0.2)
-icon = ExtResource("2_8gl78")
-
-[node name="4to1Button" type="Button" parent="Control"]
-offset_left = 628.0
-offset_top = -93.0
-offset_right = 1084.0
-offset_bottom = 427.0
-rotation = 1.5708
-scale = Vector2(0.2, 0.2)
-icon = ExtResource("2_8gl78")
-
 [node name="Interactables" type="Node2D" parent="."]
 script = ExtResource("3_rfoeh")
 
 [node name="PearlFarming" type="Button" parent="Interactables"]
-offset_left = -1050.0
-offset_top = 66.0
-offset_right = -809.0
-offset_bottom = 315.0
+offset_left = -663.0
+offset_top = 231.0
+offset_right = -492.0
+offset_bottom = 408.0
+
+[node name="PearlCleaning" type="Button" parent="Interactables"]
+offset_left = 481.0
+offset_top = 229.0
+offset_right = 682.0
+offset_bottom = 430.0
+
+[node name="PearlShop" type="Button" parent="Interactables"]
+offset_left = 1604.0
+offset_top = 261.0
+offset_right = 1866.0
+offset_bottom = 455.0
 
 [connection signal="pressed" from="Control/1to2Button" to="." method="one_to_two_button_pressed"]
 [connection signal="pressed" from="Control/2to1Button" to="." method="two_to_one_button_pressed"]
 [connection signal="pressed" from="Control/1to3Button" to="." method="one_to_three_button_pressed"]
 [connection signal="pressed" from="Control/3to1Button" to="." method="three_to_one_button_pressed"]
-[connection signal="pressed" from="Control/1to4Button" to="." method="one_to_four_button_pressed"]
-[connection signal="pressed" from="Control/4to1Button" to="." method="four_to_one_button_pressed"]
 [connection signal="pressed" from="Interactables/PearlFarming" to="Interactables" method="OnPearlClicked"]
+[connection signal="pressed" from="Interactables/PearlCleaning" to="Interactables" method="OnPearlCleaningClicked"]
+[connection signal="pressed" from="Interactables/PearlShop" to="Interactables" method="OnPearlShopClicked"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://wh7od0o4smpe"]
+
+[ext_resource type="Texture2D" uid="uid://clw1tfl0jd1s4" path="res://assets/pearl_harvesting/oyster_2_open.PNG" id="1_lfyqp"]
+
+[node name="Oyster2Open" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lfyqp")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" groups=["oyster_open"]]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Area2D"]
+polygon = PackedVector2Array(-235, -16, -223, 14, -197, 6, -144, 48, -103, 65, -64, 20, -30, 35, 0, 4, 39, 12, 70, -25, 98, -23, 136, 21, 177, -7, 215, -5, 244, -14, 235, -28, 239, -37, 199, -105, 146, -142, 87, -160, 65, -156, -6, -179, -47, -167, -68, -148, -98, -150, -110, -139, -148, -135, -187, -93, -231, -49)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Sprite2D/Area2D"]
+polygon = PackedVector2Array(-213, 71, -205, 87, -210, 99, -157, 144, -93, 128, -64, 144, -24, 141, -2, 149, 56, 142, 115, 164, 215, 116, 216, 97, 196, 97, 178, 84, 143, 90, 77, 63, 28, 90, -3, 82, -28, 95, -73, 75, -109, 86, -141, 75, -181, 81, -201, 70)

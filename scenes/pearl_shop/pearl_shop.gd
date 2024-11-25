@@ -4,13 +4,17 @@ extends Node2D
 var current_dialogue_line = 0
 var cypher_dialogues = []
 var cypher_dialogues_filtered = []
-var is_trustworthy = false
-var current_custumer
+var current_custumer_index = 0
+var current_custumer_instance
+var trustworthy_custumers = [true, false, true, true, false]
 var day = 1
+
+@onready var main_scene: PackedScene = preload("res://scenes/main_scene/main_scene.tscn")
 
 @onready var pearl_shop: PearlShop = $"."
 @onready var dialogue_box: ColorRect = $DialogueBox
 @onready var dialogue_text: RichTextLabel = $DialogueBox/RichTextLabel
+@onready var custumers: Node2D = $Custumers
 
 @onready var question_1_text: RichTextLabel = $Questions/QuestionButton1/RichTextLabel
 @onready var question_2_text: RichTextLabel = $Questions/QuestionButton2/RichTextLabel
@@ -18,7 +22,6 @@ var day = 1
 @onready var questions: Control = $Questions
 @onready var trust: Control = $Trust
 @onready var title_label: RichTextLabel = $Title/TitleLabel
-@onready var template_custumer = preload("res://scenes/pearl_shop/custumers/template_custumer.tscn")
 
 func _ready() -> void:
 	var dialogueJson = FileAccess.open("res://scenes/pearl_shop/dialog/cypher_dialog.json", FileAccess.READ)
@@ -58,53 +61,60 @@ func _on_button_1_down() -> void:
 	dialogue_box.visible = true
 	questions.visible = false
 	trust.visible = true
-	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["answer"]["trustworthy" if is_trustworthy else "untrustworthy"]
+	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["answer"]["trustworthy" if trustworthy_custumers[current_custumer_index] else "untrustworthy"]
 
 func _on_button_2_down() -> void:
 	current_dialogue_line = 1
 	dialogue_box.visible = true
 	questions.visible = false
 	trust.visible = true
-	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["answer"]["trustworthy" if is_trustworthy else "untrustworthy"]
+	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["answer"]["trustworthy" if trustworthy_custumers[current_custumer_index] else "untrustworthy"]
 
 func _on_button_3_down() -> void:
 	current_dialogue_line = 2
 	dialogue_box.visible = true
 	questions.visible = false
 	trust.visible = true
-	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["answer"]["trustworthy" if is_trustworthy else "untrustworthy"]
+	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["answer"]["trustworthy" if trustworthy_custumers[current_custumer_index] else "untrustworthy"]
 
 func _on_yes_button_down() -> void:
-	if not is_trustworthy: handle_game_over()
+	if not trustworthy_custumers[current_custumer_index]: 
+		handle_game_over()
 
-	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["reply"]["trustworthy" if is_trustworthy else "untrustworthy"]
+	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["reply"]["trustworthy" if trustworthy_custumers[current_custumer_index] else "untrustworthy"]
 	trust.visible = false
 	dismiss_customer()
 
 func _on_no_button_down() -> void:
-	if is_trustworthy: handle_game_over()
+	if trustworthy_custumers[current_custumer_index]: 
+		handle_game_over()
 
-	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["reply"]["trustworthy" if is_trustworthy else "untrustworthy"]
+	dialogue_text.bbcode_text = cypher_dialogues_filtered[current_dialogue_line]["reply"]["trustworthy" if trustworthy_custumers[current_custumer_index] else "untrustworthy"]
 	trust.visible = false
 	dismiss_customer()
 	
 func send_next_custumer() -> void:
-	pearl_shop.add_child(template_custumer.instantiate())
-	current_custumer = pearl_shop.get_child(5)
-	current_custumer.position = Vector2(-200, 250)
+	current_custumer_instance = custumers.get_child(current_custumer_index)
+	if current_custumer_index == 5:
+		current_custumer_index = 0
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_packed(main_scene)
+	else:
+		current_custumer_instance.position = Vector2(-200, 350)
 
-	var tween = create_tween()
-	tween.tween_property(current_custumer, "position", Vector2(544, 250), 1)
-	await tween.finished
-	dialogue_box.visible = false
-	trust.visible = false 
-	questions.visible = true
+		var tween = create_tween()
+		tween.tween_property(current_custumer_instance, "position", Vector2(544, 350), 1)
+		await tween.finished
+
+		dialogue_box.visible = false
+		trust.visible = false 
+		questions.visible = true
 
 func dismiss_customer() -> void:
 	var tween = create_tween()
-	tween.tween_property(current_custumer, "position", Vector2(1352, 250), 1)
+	tween.tween_property(current_custumer_instance, "position", Vector2(1552, 350), 1)
 	await tween.finished
-	pearl_shop.remove_child(current_custumer)
+	current_custumer_index += 1
 	send_next_custumer()
 
 func handle_game_over() -> void:

@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://divjkxtmomngq"]
+
+[ext_resource type="Script" path="res://Scripts/camerashake.cs" id="1_ffegs"]
+[ext_resource type="Script" path="res://scenes/pearl_harvesting/pearl_harvesting.gd" id="1_ny35a"]
+[ext_resource type="Texture2D" uid="uid://brntlglw3mtvk" path="res://assets/pearl_harvesting/pliers.png" id="3_8l8sj"]
+[ext_resource type="Texture2D" uid="uid://bs33kxhvxebgv" path="res://assets/pearl_harvesting/pearl_harvesting.png" id="3_q14nb"]
+[ext_resource type="Texture2D" uid="uid://dyxwrlh43npyy" path="res://assets/pearl_harvesting/spoon.png" id="4_oeuvs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa2ul"]
+size = Vector2(131.77, 172.938)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_43rj5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnk04"]
+size = Vector2(54.028, 51.2983)
+
+[node name="PearlHarvesting" type="Node2D"]
+script = ExtResource("1_ny35a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+position_smoothing_enabled = true
+script = ExtResource("1_ffegs")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(576, 324)
+texture = ExtResource("3_q14nb")
+
+[node name="PearlMinigameMain" type="Node2D" parent="."]
+
+[node name="Pliers" type="Sprite2D" parent="PearlMinigameMain"]
+position = Vector2(476, 800)
+rotation = 2.35619
+scale = Vector2(0.425781, 0.425781)
+texture = ExtResource("3_8l8sj")
+
+[node name="Area2D" type="Area2D" parent="PearlMinigameMain/Pliers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PearlMinigameMain/Pliers/Area2D"]
+position = Vector2(-160.688, 171.436)
+rotation = 0.760964
+shape = SubResource("RectangleShape2D_fa2ul")
+
+[node name="Button" type="Button" parent="PearlMinigameMain/Pliers"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -281.0
+offset_right = -169.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.74002
+theme_override_styles/focus = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_43rj5")
+
+[node name="Spoon" type="Sprite2D" parent="PearlMinigameMain"]
+position = Vector2(706, 842)
+rotation = 0.785398
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_oeuvs")
+offset = Vector2(-100, -100)
+
+[node name="Area2D" type="Area2D" parent="PearlMinigameMain/Spoon"]
+rotation = 1.309
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PearlMinigameMain/Spoon/Area2D"]
+position = Vector2(-388.796, 221.586)
+rotation = -0.523598
+shape = SubResource("RectangleShape2D_hnk04")
+
+[node name="Button2" type="Button" parent="PearlMinigameMain/Spoon"]
+offset_left = 185.616
+offset_top = 97.2272
+offset_right = 298.616
+offset_bottom = 767.227
+rotation = 2.35619
+theme_override_styles/focus = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_43rj5")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_43rj5")
+
+[node name="Area2D2" type="Area2D" parent="PearlMinigameMain"]
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="PearlMinigameMain/Area2D2"]
+position = Vector2(575, 328)
+polygon = PackedVector2Array(-252, -43, -179, -153, -5, -196, 170, -165, 275, -35, 267, 71, 215, 175, -132, 172, -223, 126)
+
+[connection signal="area_entered" from="PearlMinigameMain/Pliers/Area2D" to="." method="_on_pliers_area_entered"]
+[connection signal="pressed" from="PearlMinigameMain/Pliers/Button" to="." method="_on_pliers_button_pressed"]
+[connection signal="area_entered" from="PearlMinigameMain/Spoon/Area2D" to="." method="_on_spoon_area_entered"]
+[connection signal="pressed" from="PearlMinigameMain/Spoon/Button2" to="." method="_on_spoon_button_pressed"]
+[connection signal="area_exited" from="PearlMinigameMain/Area2D2" to="." method="_on_oyster_area_exited"]

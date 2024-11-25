@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwco1yyemqopl"]
+
+[ext_resource type="Texture2D" uid="uid://b2ytg2jprbwr2" path="res://assets/pearl/pearl.png" id="1_86ska"]
+
+[node name="Pearl" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_86ska")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" groups=["pearl"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Area2D"]
+polygon = PackedVector2Array(-3, -240, -74, -231, -136, -199, -177, -161, -210, -111, -232, -57, -238, 4, -233, 51, -218, 94, -188, 150, -140, 194, -75, 229, -11, 240, 50, 236, 93, 222, 151, 191, 198, 142, 241, 48, 238, -57, 224, -98, 192, -153, 135, -204, 42, -240)
