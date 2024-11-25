@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjakybops5iu0"]
+[gd_scene load_steps=17 format=3 uid="uid://cjakybops5iu0"]
 
 [ext_resource type="Script" path="res://scenes/pearl_cleaning/pearl_cleaning.gd" id="1_28cg8"]
 [ext_resource type="Texture2D" uid="uid://bjtr8ms2jj03n" path="res://assets/pearl_cleaning/brush.png" id="2_arbdv"]
@@ -12,12 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://b75fe2egvpnq5" path="res://assets/pearl_cleaning/shine.png" id="7_ubecp"]
 [ext_resource type="Texture2D" uid="uid://bhj0met5e0lrf" path="res://assets/pearl_cleaning/tape.png" id="8_g2dfs"]
 [ext_resource type="Texture2D" uid="uid://coh3x3axn6inl" path="res://assets/peal_shop/small_box.png" id="12_twf2n"]
+[ext_resource type="Texture2D" uid="uid://c82mjme1mvjb" path="res://assets/peal_shop/big_box.png" id="13_nu81k"]
 
 [sub_resource type="SystemFont" id="SystemFont_p3w8r"]
 font_names = PackedStringArray("Impact")
 
 [sub_resource type="SystemFont" id="SystemFont_wv4fc"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_s20qt"]
 
 [node name="PearlCleaning" type="Node2D"]
 script = ExtResource("1_28cg8")
@@ -161,13 +165,36 @@ offset_right = -439.0
 offset_bottom = -559.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_wv4fc")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[center]Clean to pearl to increase its value!
 [center]Left click: pick up tool
 [center]Right click: release tool"
+
+[node name="Congratulations" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Congratulations"]
+position = Vector2(576, 332)
+scale = Vector2(1.32167, 1)
+texture = ExtResource("13_nu81k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Congratulations"]
+offset_left = 2.0
+offset_top = 272.0
+offset_right = 1149.0
+offset_bottom = 419.0
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.1258, 0.32215, 0.34, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = SubResource("SystemFont_s20qt")
+theme_override_font_sizes/normal_font_size = 82
+bbcode_enabled = true
+text = "[center]Congratulations!"
 
 [connection signal="button_down" from="Polish/PolishButton" to="." method="_on_polish_button_down"]
 [connection signal="area_entered" from="Polish/Area2D" to="." method="_on_polish_area_entered"]

@@ -16,6 +16,7 @@ var target_position_spoon: Vector2
 
 const pearl: PackedScene = preload("res://scenes/pearl_harvesting/pearl.tscn")
 var pearl_instance
+@onready var congratulations: Node2D = $Congratulations
 
 @onready var pliers: Sprite2D = $PearlMinigameMain/Pliers
 @onready var pliers_collision_2d: CollisionShape2D = $PearlMinigameMain/Spoon/Area2D/CollisionShape2D
@@ -112,4 +113,6 @@ func _on_spoon_area_entered(area: Area2D) -> void:
 
 func _on_oyster_area_exited(_area: Area2D) -> void:
 	if is_pearl_picked:
+		congratulations.visible = true
+		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(main_scene)

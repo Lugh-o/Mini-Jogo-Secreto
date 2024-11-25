@@ -20,6 +20,7 @@ var crack_array = [crack_1, crack_2, crack_3]
 var cracks
 
 @onready var text: RichTextLabel = $Tape/RichTextLabel
+@onready var congratulations: Node2D = $Congratulations
 
 var is_brush = false
 var is_tape = false
@@ -120,7 +121,6 @@ func check_if_clean() -> void:
 		Globals.pearl_amount += 1
 		Globals.pearl_price -= Globals.crack_amount * 20
 		Globals.crack_amount = 0
-
-		# OVERLAY DE CONCLUIDO
+		congratulations.visible = true
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(main_scene)

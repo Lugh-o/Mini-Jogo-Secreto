@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://divjkxtmomngq"]
+[gd_scene load_steps=13 format=3 uid="uid://divjkxtmomngq"]
 
 [ext_resource type="Script" path="res://Scripts/camerashake.cs" id="1_ffegs"]
 [ext_resource type="Script" path="res://scenes/pearl_harvesting/pearl_harvesting.gd" id="1_ny35a"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bs33kxhvxebgv" path="res://assets/pearl_harvesting/pearl_harvesting.png" id="3_q14nb"]
 [ext_resource type="Texture2D" uid="uid://dyxwrlh43npyy" path="res://assets/pearl_harvesting/spoon.png" id="4_oeuvs"]
 [ext_resource type="Texture2D" uid="uid://coh3x3axn6inl" path="res://assets/peal_shop/small_box.png" id="6_k2rqb"]
+[ext_resource type="Texture2D" uid="uid://c82mjme1mvjb" path="res://assets/peal_shop/big_box.png" id="7_hd8n7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fa2ul"]
 size = Vector2(131.77, 172.938)
@@ -17,6 +18,9 @@ size = Vector2(54.028, 51.2983)
 
 [sub_resource type="SystemFont" id="SystemFont_hobn8"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_tl6b4"]
 
 [node name="PearlHarvesting" type="Node2D"]
 script = ExtResource("1_ny35a")
@@ -109,7 +113,9 @@ offset_right = -432.0
 offset_bottom = -539.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_hobn8")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
@@ -117,6 +123,27 @@ text = "[center]Use the plier the open the oyster and the spoon to remove the pe
 [center]Be careful to not damage the pearl
 [center]Left click: pick up tool
 [center]Right click: release tool"
+
+[node name="Congratulations" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Congratulations"]
+position = Vector2(576, 332)
+scale = Vector2(1.32167, 1)
+texture = ExtResource("7_hd8n7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Congratulations"]
+offset_left = 2.0
+offset_top = 272.0
+offset_right = 1149.0
+offset_bottom = 419.0
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.1258, 0.32215, 0.34, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = SubResource("SystemFont_tl6b4")
+theme_override_font_sizes/normal_font_size = 82
+bbcode_enabled = true
+text = "[center]Congratulations!"
 
 [connection signal="area_entered" from="PearlMinigameMain/Pliers/Area2D" to="." method="_on_pliers_area_entered"]
 [connection signal="pressed" from="PearlMinigameMain/Pliers/Button" to="." method="_on_pliers_button_pressed"]

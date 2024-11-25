@@ -9,27 +9,35 @@
 
 [sub_resource type="SystemFont" id="SystemFont_ub5nm"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_jrkqa"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_4b5bt"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_hfyrt"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_b8mrg"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_t00e8"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_2hkqw"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_mykcw"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [node name="PearlShop" type="Node2D"]
 script = ExtResource("1_u4r7i")
@@ -56,7 +64,10 @@ offset_right = 1124.0
 offset_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/text_highlight_h_padding = 0
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_ub5nm")
 bbcode_enabled = true
 text = "QWWEQWEQWE"
@@ -79,7 +90,9 @@ offset_right = 328.0
 offset_bottom = 218.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_jrkqa")
 bbcode_enabled = true
 text = "TESTANDO DIÁLOGOASDASD"
@@ -122,7 +135,9 @@ offset_right = 1115.0
 offset_bottom = 470.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_4b5bt")
 bbcode_enabled = true
 text = "teste"
@@ -155,7 +170,9 @@ offset_top = -21.0
 offset_right = 278.0
 offset_bottom = 25.0
 grow_horizontal = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_hfyrt")
 bbcode_enabled = true
 text = "asdasdasdasddasd"
@@ -189,7 +206,9 @@ offset_right = 1125.0
 offset_bottom = 630.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_4b5bt")
 bbcode_enabled = true
 text = "teste"
@@ -227,7 +246,9 @@ offset_left = 485.0
 offset_top = 402.0
 offset_right = 651.0
 offset_bottom = 442.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_b8mrg")
 bbcode_enabled = true
 text = "[center]Do you trust them?[/center]"
@@ -244,7 +265,9 @@ offset_left = 316.0
 offset_top = 510.0
 offset_right = 480.0
 offset_bottom = 572.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_t00e8")
 theme_override_font_sizes/normal_font_size = 34
 bbcode_enabled = true
@@ -275,7 +298,9 @@ offset_right = 837.0
 offset_bottom = 579.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_2hkqw")
 theme_override_font_sizes/normal_font_size = 34
 bbcode_enabled = true
@@ -301,7 +326,9 @@ offset_left = 90.0
 offset_top = 404.0
 offset_right = 353.0
 offset_bottom = 503.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_mykcw")
 bbcode_enabled = true
 
