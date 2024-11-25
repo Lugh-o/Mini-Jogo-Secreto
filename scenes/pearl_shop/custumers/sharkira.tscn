@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7msvianf55qx"]
+[gd_scene load_steps=3 format=3 uid="uid://c7msvianf55qx"]
 
 [ext_resource type="Texture2D" uid="uid://dsnbxbb1f3y7d" path="res://assets/peal_shop/custumers/sharkira.png" id="1_kloiu"]
+[ext_resource type="Texture2D" uid="uid://bj2m4fjjp7ucw" path="res://assets/peal_shop/custumers/Badge.png" id="2_5mbt7"]
 
 [node name="Sharkira" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kloiu")
+
+[node name="Badge" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_5mbt7")
