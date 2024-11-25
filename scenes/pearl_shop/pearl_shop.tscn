@@ -1,10 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://b60ut84td1f0e"]
+[gd_scene load_steps=19 format=3 uid="uid://b60ut84td1f0e"]
 
 [ext_resource type="Script" path="res://scenes/pearl_shop/pearl_shop.gd" id="1_u4r7i"]
 [ext_resource type="Texture2D" uid="uid://dbytmx4aqr7dw" path="res://assets/peal_shop/shop_background.png" id="2_s8bvc"]
 [ext_resource type="Texture2D" uid="uid://c82mjme1mvjb" path="res://assets/peal_shop/big_box.png" id="3_4eue1"]
 [ext_resource type="Texture2D" uid="uid://6f2w7vgnftyw" path="res://assets/peal_shop/dialogue_box.png" id="3_cs1wk"]
+[ext_resource type="AudioStream" uid="uid://w6vl52xe0rmc" path="res://assets/sounds/female_grunt.wav" id="7_go17g"]
 [ext_resource type="Texture2D" uid="uid://duyv16twpyc6g" path="res://assets/peal_shop/shop_table.png" id="8_37pho"]
+[ext_resource type="AudioStream" uid="uid://ukw3rtsp0bvo" path="res://assets/sounds/male_grunt.wav" id="8_sbfcp"]
+[ext_resource type="AudioStream" uid="uid://cb8dx8qdaas1l" path="res://assets/sounds/cash_register.mp3" id="9_hb4lm"]
 [ext_resource type="Texture2D" uid="uid://coh3x3axn6inl" path="res://assets/peal_shop/small_box.png" id="11_n1cxn"]
 
 [sub_resource type="SystemFont" id="SystemFont_ub5nm"]
@@ -398,6 +401,18 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 45
 text = "Try Again"
 flat = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_go17g")
+volume_db = -10.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_sbfcp")
+volume_db = -10.0
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_hb4lm")
+volume_db = -10.0
 
 [connection signal="button_down" from="Questions/Question1/Button1" to="." method="_on_button_1_down"]
 [connection signal="button_down" from="Questions/Question2/Button2" to="." method="_on_button_2_down"]
