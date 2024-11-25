@@ -11,7 +11,7 @@ var custumer_array
 var day = 1
 var is_grumpy = true
 
-@onready var main_scene: PackedScene = preload("res://scenes/main_scene/main_scene.tscn")
+const main_scene = preload("res://scenes/main_scene/main_scene.tscn")
 @onready var pearl_shop: PearlShop = $"."
 
 @onready var title_label: RichTextLabel = $Title/TitleLabel
@@ -45,7 +45,7 @@ func _ready() -> void:
 		cypher_dialogues = JSON.parse_string(dialogueJson.get_as_text())
 		dialogueJson.close()
 
-	start_dialogue_by_day(day)
+	start_dialogue_by_day(randi_range(1, 3))
 	send_next_custumer() 
 
 func start_dialogue_by_day(day_number: int) -> void:
@@ -55,13 +55,13 @@ func start_dialogue_by_day(day_number: int) -> void:
 	match day_number:
 		1: 
 			theme = "oceanCurrents"
-			title_label.bbcode_text = "[center]Day 1: Trustworthy clients will show familiarity with navigation and marine flows.[/center]"
+			title_label.bbcode_text = "[center]Trustworthy clients will show familiarity with navigation and marine flows.[/center]"
 		2: 
 			theme = "rareResources"
-			title_label.bbcode_text = "[center]Day 2: Trustworthy clients will demonstrate knowledge about valuable and hard-to-obtain items.[/center]"
+			title_label.bbcode_text = "[center]Trustworthy clients will demonstrate knowledge about valuable and hard-to-obtain items.[/center]"
 		3: 
 			theme = "rumorsAndPlaces"
-			title_label.bbcode_text = "[center]Day 3: Trustworthy clients will remain calm and informed about mysterious events and locations.[/center]"
+			title_label.bbcode_text = "[center]Trustworthy clients will remain calm and informed about mysterious events and locations.[/center]"
 
 	for item in cypher_dialogues:
 		if item["theme"] == theme:
@@ -100,7 +100,11 @@ func _on_yes_button_down() -> void:
 		player_dialogue_box.visible = true
 		trust.visible = false
 		custumer_dialogue_box.visible = false
-		dismiss_customer()
+		#dismiss_customer()
+		Globals.gamestate = 1
+		Globals.money += Globals.pearl_price
+		Globals.pearl_price = 100
+		get_tree().change_scene_to_packed(main_scene)
 
 func _on_no_button_down() -> void:
 	if Globals.trustworthy_custumers[current_custumer_instance.name]: 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cjakybops5iu0"]
+[gd_scene load_steps=18 format=3 uid="uid://cjakybops5iu0"]
 
 [ext_resource type="Script" path="res://scenes/pearl_cleaning/pearl_cleaning.gd" id="1_28cg8"]
 [ext_resource type="Texture2D" uid="uid://bjtr8ms2jj03n" path="res://assets/pearl_cleaning/brush.png" id="2_arbdv"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bhj0met5e0lrf" path="res://assets/pearl_cleaning/tape.png" id="8_g2dfs"]
 [ext_resource type="Texture2D" uid="uid://coh3x3axn6inl" path="res://assets/peal_shop/small_box.png" id="12_twf2n"]
 [ext_resource type="Texture2D" uid="uid://c82mjme1mvjb" path="res://assets/peal_shop/big_box.png" id="13_nu81k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtids"]
 
 [sub_resource type="SystemFont" id="SystemFont_p3w8r"]
 font_names = PackedStringArray("Impact")
@@ -91,6 +93,17 @@ offset_right = -250.0
 offset_bottom = -250.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vtids")
 flat = true
 
 [node name="Area2D" type="Area2D" parent="Polish"]
@@ -113,6 +126,17 @@ offset_right = -250.0
 offset_bottom = -250.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vtids")
 flat = true
 
 [node name="Area2D" type="Area2D" parent="Tape"]
@@ -144,6 +168,17 @@ offset_right = -250.0
 offset_bottom = -250.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_vtids")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vtids")
 flat = true
 
 [node name="Area2D" type="Area2D" parent="Brush"]

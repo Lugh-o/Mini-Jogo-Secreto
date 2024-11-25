@@ -1,7 +1,7 @@
 class_name PearlHarvesting
 extends Node2D
 
-@onready var main_scene: PackedScene = preload("res://scenes/main_scene/main_scene.tscn")
+const main_scene = preload("res://scenes/main_scene/main_scene.tscn")
 
 const oyster_1_closed: PackedScene = preload("res://scenes/pearl_harvesting/oysters/oyster_1_closed.tscn")
 const oyster_1_open: PackedScene = preload("res://scenes/pearl_harvesting/oysters/oyster_1_open.tscn")
@@ -37,6 +37,7 @@ func _ready() -> void:
 	oyster_chosen_closed.position = Vector2(576, 220)
 	oyster_chosen_closed.z_index = -1
 	pearl_minigame_main.add_child(oyster_chosen_closed)	
+	Globals.pearl_price = 100
 
 func _physics_process(delta: float) -> void:
 	handle_tools(delta)
@@ -111,8 +112,8 @@ func _on_spoon_area_entered(area: Area2D) -> void:
 			camera_2d.call("ApplyShake", 20)
 			Globals.crack_amount += 1
 
-func _on_oyster_area_exited(_area: Area2D) -> void:
-	if is_pearl_picked:
+func _on_oyster_area_exited(area: Area2D) -> void:
+	if is_pearl_picked and area.is_in_group("pearl"):
 		congratulations.visible = true
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(main_scene)

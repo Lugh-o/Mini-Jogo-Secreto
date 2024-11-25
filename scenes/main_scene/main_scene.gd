@@ -1,3 +1,4 @@
+class_name MainScene
 extends Node2D
 
 @onready var one_to_two_button: Button = $"Control/1to2Button"
