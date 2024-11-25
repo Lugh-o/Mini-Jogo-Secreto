@@ -29,11 +29,13 @@ gradient = SubResource("Gradient_su4td")
 
 [sub_resource type="SystemFont" id="SystemFont_746su"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjdap"]
 
 [sub_resource type="SystemFont" id="SystemFont_mycwd"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_oyh4y")
@@ -141,6 +143,7 @@ texture = ExtResource("3_e43qg")
 [node name="Control" type="Node2D" parent="."]
 
 [node name="1to2Button" type="Button" parent="Control"]
+visible = false
 offset_left = 1059.0
 offset_top = 272.0
 offset_right = 1515.0
@@ -149,6 +152,7 @@ scale = Vector2(0.2, 0.2)
 icon = ExtResource("2_8gl78")
 
 [node name="2to1Button" type="Button" parent="Control"]
+visible = false
 offset_left = 1246.0
 offset_top = 376.0
 offset_right = 1702.0
@@ -158,6 +162,7 @@ scale = Vector2(0.2, 0.2)
 icon = ExtResource("2_8gl78")
 
 [node name="1to3Button" type="Button" parent="Control"]
+visible = false
 offset_left = 92.0
 offset_top = 376.0
 offset_right = 548.0
@@ -167,6 +172,7 @@ scale = Vector2(0.2, 0.2)
 icon = ExtResource("2_8gl78")
 
 [node name="3to1Button" type="Button" parent="Control"]
+visible = false
 offset_left = -92.0
 offset_top = 272.0
 offset_right = 364.0

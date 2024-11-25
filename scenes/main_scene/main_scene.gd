@@ -10,6 +10,22 @@ extends Node2D
 @export var tape_amount = 0 
 @export var reputation = 0
 
+func _init() -> void:
+	if(Globals.gamestate == 3):
+		camera_2d.position_smoothing_enabled = false
+		camera_2d.position.x = 576
+		camera_2d.position_smoothing_enabled = true
+	
+func _process(delta: float) -> void:
+	var value = 0
+	if(Globals.gamestate == 1):
+		value = -576
+	elif(Globals.gamestate == 2):
+		value = 576
+	elif(Globals.gamestate == 3):
+		value = 1728
+	camera_2d.position.x = value
+
 func one_to_two_button_pressed() -> void:
 	camera_2d.position.x = 1728
 

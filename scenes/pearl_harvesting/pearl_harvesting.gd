@@ -116,3 +116,4 @@ func _on_oyster_area_exited(_area: Area2D) -> void:
 		congratulations.visible = true
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(main_scene)
+		Globals.gamestate = 2
