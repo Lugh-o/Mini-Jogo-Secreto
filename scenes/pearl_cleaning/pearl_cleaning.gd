@@ -124,3 +124,4 @@ func check_if_clean() -> void:
 		# OVERLAY DE CONCLUIDO
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(main_scene)
+		Globals.gamestate = 3

@@ -113,3 +113,4 @@ func _on_spoon_area_entered(area: Area2D) -> void:
 func _on_oyster_area_exited(_area: Area2D) -> void:
 	if is_pearl_picked:
 		get_tree().change_scene_to_packed(main_scene)
+		Globals.gamestate = 2
