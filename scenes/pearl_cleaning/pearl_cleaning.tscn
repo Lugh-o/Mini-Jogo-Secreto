@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjakybops5iu0"]
+[gd_scene load_steps=13 format=3 uid="uid://cjakybops5iu0"]
 
 [ext_resource type="Script" path="res://scenes/pearl_cleaning/pearl_cleaning.gd" id="1_28cg8"]
 [ext_resource type="Texture2D" uid="uid://bjtr8ms2jj03n" path="res://assets/pearl_cleaning/brush.png" id="2_arbdv"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://vja6qdh2nq0" path="res://assets/pearl_cleaning/dirt_3.png" id="5_fhfbp"]
 [ext_resource type="Texture2D" uid="uid://b75fe2egvpnq5" path="res://assets/pearl_cleaning/shine.png" id="7_ubecp"]
 [ext_resource type="Texture2D" uid="uid://bhj0met5e0lrf" path="res://assets/pearl_cleaning/tape.png" id="8_g2dfs"]
+
+[sub_resource type="SystemFont" id="SystemFont_p3w8r"]
+font_names = PackedStringArray("Impact")
 
 [node name="PearlCleaning" type="Node2D"]
 script = ExtResource("1_28cg8")
@@ -108,6 +111,15 @@ flat = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tape/Area2D"]
 polygon = PackedVector2Array(-209.459, -148.649, -243.243, -65.3153, -225.225, 58.5586, -157.658, 164.414, -31.5315, 236.486, 87.8378, 193.694, 177.928, 108.108, 189.189, 38.2883, 245.495, -4.50452, 121.622, -157.658, -13.5135, -225.225, -128.378, -193.694)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tape"]
+offset_left = 16.0
+offset_top = 112.0
+offset_right = 190.0
+offset_bottom = 270.0
+theme_override_fonts/normal_font = SubResource("SystemFont_p3w8r")
+bbcode_enabled = true
+text = "[font_size=100][right]X3[/right][/font_size]"
 
 [node name="Brush" type="Sprite2D" parent="."]
 position = Vector2(276, 805)
