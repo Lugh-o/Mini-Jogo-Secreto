@@ -11,6 +11,7 @@ var custumer_array
 var day = 1
 var is_grumpy = true
 
+const main_menu = preload("res://scenes/interfaces/main_menu/main_menu.tscn")
 const main_scene = preload("res://scenes/main_scene/main_scene.tscn")
 @onready var pearl_shop: PearlShop = $"."
 
@@ -24,10 +25,12 @@ const main_scene = preload("res://scenes/main_scene/main_scene.tscn")
 
 @onready var custumer_dialogue_box: Node2D = $CustumerDialogueBox
 @onready var custumer_dialogue_box_label: RichTextLabel = $CustumerDialogueBox/RichTextLabel
+@onready var custumer_dialogue_box_name_label: RichTextLabel = $CustumerDialogueBox/Name
 
 @onready var custumers: Node2D = $Custumers
 @onready var questions: Control = $Questions
 @onready var trust: Control = $Trust
+@onready var game_over: Node2D = $GameOver
 
 @onready var eelton_john = preload("res://scenes/pearl_shop/custumers/eelton_john.tscn")
 @onready var gilly_eilish = preload("res://scenes/pearl_shop/custumers/gilly_eilish.tscn")
@@ -38,7 +41,7 @@ const main_scene = preload("res://scenes/main_scene/main_scene.tscn")
 func _ready() -> void:
 	custumer_array = [eelton_john, gilly_eilish, marlin_monroe, sharkira, whale_smith]
 	custumer_array.shuffle()
-
+	current_custumer_index = 0
 	var dialogueJson = FileAccess.open("res://scenes/pearl_shop/dialog/cypher_dialog.json", FileAccess.READ)
 	
 	if dialogueJson:
@@ -77,6 +80,7 @@ func _on_button_1_down() -> void:
 	questions.visible = false
 	trust.visible = true
 	custumer_dialogue_box_label.bbcode_text = "[center]" + cypher_dialogues_filtered[current_dialogue_line]["answer"]["trustworthy" if Globals.trustworthy_custumers[current_custumer_instance.name] else "untrustworthy"] + "[/center]"
+	custumer_dialogue_box_name_label.bbcode_text = current_custumer_instance.name
 
 func _on_button_2_down() -> void:
 	current_dialogue_line = 1
@@ -84,6 +88,7 @@ func _on_button_2_down() -> void:
 	questions.visible = false
 	trust.visible = true
 	custumer_dialogue_box_label.bbcode_text = "[center]" + cypher_dialogues_filtered[current_dialogue_line]["answer"]["trustworthy" if Globals.trustworthy_custumers[current_custumer_instance.name] else "untrustworthy"] + "[/center]"
+	custumer_dialogue_box_name_label.bbcode_text = current_custumer_instance.name
 
 func _on_button_3_down() -> void:
 	current_dialogue_line = 2
@@ -91,6 +96,7 @@ func _on_button_3_down() -> void:
 	questions.visible = false
 	trust.visible = true
 	custumer_dialogue_box_label.bbcode_text = "[center]" + cypher_dialogues_filtered[current_dialogue_line]["answer"]["trustworthy" if Globals.trustworthy_custumers[current_custumer_instance.name] else "untrustworthy"] + "[/center]"
+	custumer_dialogue_box_name_label.bbcode_text = current_custumer_instance.name
 
 func _on_yes_button_down() -> void:
 	if not Globals.trustworthy_custumers[current_custumer_instance.name]: 
@@ -101,6 +107,11 @@ func _on_yes_button_down() -> void:
 		trust.visible = false
 		custumer_dialogue_box.visible = false
 		#dismiss_customer()
+		current_custumer_index += 1
+		if current_custumer_index == 5:
+			await get_tree().create_timer(2).timeout
+			get_tree().change_scene_to_packed(main_scene)
+
 		Globals.gamestate = 1
 		Globals.money += Globals.pearl_price
 		Globals.pearl_price = 100
@@ -139,20 +150,28 @@ func dismiss_customer() -> void:
 	current_custumer_index += 1
 
 	if current_custumer_index == 5:
-		current_custumer_index = 0
+		Globals.gamestate = 1
+		Globals.pearl_price = 100
 		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_packed(main_scene)
 	else:
 		send_next_custumer()
 
 func handle_game_over() -> void:
-	print("game over")
 	current_custumer_instance.get_child(1).visible = true
 	custumer_dialogue_box.visible = false
 	player_dialogue_box.visible = false
 	trust.visible = false 
 	player_dialogue_box.visible = false
 	questions.visible = false
-
+	Globals.gamestate = 1
+	Globals.pearl_price = 100
+	Globals.crack_amount = 0
+	Globals.tape_ammount  = 2
+	Globals.money  = 100
 	await get_tree().create_timer(3).timeout
-	get_tree().quit()
+	game_over.visible = true
+
+
+func _on_button_button_down() -> void:
+	get_tree().change_scene_to_packed(main_menu)

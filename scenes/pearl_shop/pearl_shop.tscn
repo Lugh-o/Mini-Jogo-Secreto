@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b60ut84td1f0e"]
+[gd_scene load_steps=16 format=3 uid="uid://b60ut84td1f0e"]
 
 [ext_resource type="Script" path="res://scenes/pearl_shop/pearl_shop.gd" id="1_u4r7i"]
 [ext_resource type="Texture2D" uid="uid://dbytmx4aqr7dw" path="res://assets/peal_shop/shop_background.png" id="2_s8bvc"]
@@ -37,6 +37,9 @@ subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_mykcw"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_765sy"]
 subpixel_positioning = 0
 
 [node name="PearlShop" type="Node2D"]
@@ -96,6 +99,30 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_jrkqa")
 bbcode_enabled = true
 text = "TESTANDO DIÁLOGOASDASD"
+threaded = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CustumerDialogueBox"]
+position = Vector2(276, 117)
+scale = Vector2(0.508333, 0.25)
+texture = ExtResource("11_n1cxn")
+
+[node name="Name" type="RichTextLabel" parent="CustumerDialogueBox"]
+clip_contents = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 98.0
+offset_right = 353.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = SubResource("SystemFont_jrkqa")
+bbcode_enabled = true
+text = "asdads"
 threaded = true
 
 [node name="Custumers" type="Node2D" parent="."]
@@ -332,8 +359,49 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource("SystemFont_mykcw")
 bbcode_enabled = true
 
+[node name="GameOver" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="GameOver"]
+position = Vector2(576, 321)
+scale = Vector2(1.32167, 1.66167)
+texture = ExtResource("3_4eue1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOver"]
+offset_left = 2.0
+offset_top = 223.0
+offset_right = 1149.0
+offset_bottom = 370.0
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.1258, 0.32215, 0.34, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = SubResource("SystemFont_765sy")
+theme_override_font_sizes/normal_font_size = 82
+bbcode_enabled = true
+text = "[center]Game Over"
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+offset_left = 484.0
+offset_top = 353.0
+offset_right = 708.0
+offset_bottom = 421.0
+color = Color(0.948103, 0.733127, 0.642164, 1)
+
+[node name="Button" type="Button" parent="GameOver"]
+offset_left = 492.0
+offset_top = 346.0
+offset_right = 703.0
+offset_bottom = 424.0
+theme_override_colors/font_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 45
+text = "Try Again"
+flat = true
+
 [connection signal="button_down" from="Questions/Question1/Button1" to="." method="_on_button_1_down"]
 [connection signal="button_down" from="Questions/Question2/Button2" to="." method="_on_button_2_down"]
 [connection signal="button_down" from="Questions/Question3/Button3" to="." method="_on_button_3_down"]
 [connection signal="button_down" from="Trust/YesNode/Button" to="." method="_on_yes_button_down"]
 [connection signal="button_down" from="Trust/NoNode/Button" to="." method="_on_no_button_down"]
+[connection signal="button_down" from="GameOver/Button" to="." method="_on_button_button_down"]
