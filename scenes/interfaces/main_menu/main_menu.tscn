@@ -10,6 +10,7 @@ gradient = SubResource("Gradient_fkmxp")
 
 [sub_resource type="SystemFont" id="SystemFont_s35f8"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_fvpk5"]
 font_names = PackedStringArray("Impact")

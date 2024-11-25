@@ -38,6 +38,11 @@ const main_scene = preload("res://scenes/main_scene/main_scene.tscn")
 @onready var sharkira = preload("res://scenes/pearl_shop/custumers/sharkira.tscn")
 @onready var whale_smith = preload("res://scenes/pearl_shop/custumers/whale_smith.tscn")
 
+@onready var femmumble: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var mascmumble: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var cashreg: AudioStreamPlayer2D = $AudioStreamPlayer2D3
+
+
 func _ready() -> void:
 	custumer_array = [eelton_john, gilly_eilish, marlin_monroe, sharkira, whale_smith]
 	custumer_array.shuffle()
@@ -112,9 +117,11 @@ func _on_yes_button_down() -> void:
 			await get_tree().create_timer(2).timeout
 			get_tree().change_scene_to_packed(main_scene)
 
+		cashreg.play()
 		Globals.gamestate = 1
 		Globals.money += Globals.pearl_price
 		Globals.pearl_price = 100
+		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_packed(main_scene)
 
 func _on_no_button_down() -> void:
@@ -146,7 +153,11 @@ func dismiss_customer() -> void:
 	var tween = create_tween()
 	tween.tween_property(current_custumer_instance, "position", Vector2(1552, 350), 1)
 	await tween.finished
-
+	if randi_range(1, 2) == 1:
+		femmumble.play()
+	else:
+		mascmumble.play()
+	
 	current_custumer_index += 1
 
 	if current_custumer_index == 5:
