@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://divjkxtmomngq"]
+[gd_scene load_steps=11 format=3 uid="uid://divjkxtmomngq"]
 
 [ext_resource type="Script" path="res://Scripts/camerashake.cs" id="1_ffegs"]
 [ext_resource type="Script" path="res://scenes/pearl_harvesting/pearl_harvesting.gd" id="1_ny35a"]
 [ext_resource type="Texture2D" uid="uid://brntlglw3mtvk" path="res://assets/pearl_harvesting/pliers.png" id="3_8l8sj"]
 [ext_resource type="Texture2D" uid="uid://bs33kxhvxebgv" path="res://assets/pearl_harvesting/pearl_harvesting.png" id="3_q14nb"]
 [ext_resource type="Texture2D" uid="uid://dyxwrlh43npyy" path="res://assets/pearl_harvesting/spoon.png" id="4_oeuvs"]
+[ext_resource type="Texture2D" uid="uid://coh3x3axn6inl" path="res://assets/peal_shop/small_box.png" id="6_k2rqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fa2ul"]
 size = Vector2(131.77, 172.938)
@@ -13,6 +14,9 @@ size = Vector2(131.77, 172.938)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnk04"]
 size = Vector2(54.028, 51.2983)
+
+[sub_resource type="SystemFont" id="SystemFont_hobn8"]
+font_names = PackedStringArray("Comic Sans MS")
 
 [node name="PearlHarvesting" type="Node2D"]
 script = ExtResource("1_ny35a")
@@ -89,6 +93,30 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_43rj5")
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="PearlMinigameMain/Area2D2"]
 position = Vector2(575, 328)
 polygon = PackedVector2Array(-252, -43, -179, -153, -5, -196, 170, -165, 275, -35, 267, 71, 215, 175, -132, 172, -223, 126)
+
+[node name="Tooltip" type="Sprite2D" parent="."]
+position = Vector2(172, 126)
+scale = Vector2(0.828333, 0.828333)
+texture = ExtResource("6_k2rqb")
+
+[node name="Label" type="RichTextLabel" parent="Tooltip"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -83.0
+offset_right = -432.0
+offset_bottom = -539.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_hobn8")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]Use the plier the open the oyster and the spoon to remove the pearl
+[center]Be careful to not damage the pearl
+[center]Left click: pick up tool
+[center]Right click: release tool"
 
 [connection signal="area_entered" from="PearlMinigameMain/Pliers/Area2D" to="." method="_on_pliers_area_entered"]
 [connection signal="pressed" from="PearlMinigameMain/Pliers/Button" to="." method="_on_pliers_button_pressed"]

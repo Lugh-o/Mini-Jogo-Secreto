@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjakybops5iu0"]
+[gd_scene load_steps=15 format=3 uid="uid://cjakybops5iu0"]
 
 [ext_resource type="Script" path="res://scenes/pearl_cleaning/pearl_cleaning.gd" id="1_28cg8"]
 [ext_resource type="Texture2D" uid="uid://bjtr8ms2jj03n" path="res://assets/pearl_cleaning/brush.png" id="2_arbdv"]
@@ -11,9 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://vja6qdh2nq0" path="res://assets/pearl_cleaning/dirt_3.png" id="5_fhfbp"]
 [ext_resource type="Texture2D" uid="uid://b75fe2egvpnq5" path="res://assets/pearl_cleaning/shine.png" id="7_ubecp"]
 [ext_resource type="Texture2D" uid="uid://bhj0met5e0lrf" path="res://assets/pearl_cleaning/tape.png" id="8_g2dfs"]
+[ext_resource type="Texture2D" uid="uid://coh3x3axn6inl" path="res://assets/peal_shop/small_box.png" id="12_twf2n"]
 
 [sub_resource type="SystemFont" id="SystemFont_p3w8r"]
 font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_wv4fc"]
+font_names = PackedStringArray("Comic Sans MS")
 
 [node name="PearlCleaning" type="Node2D"]
 script = ExtResource("1_28cg8")
@@ -143,25 +147,27 @@ flat = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Brush/Area2D"]
 polygon = PackedVector2Array(-237.5, 195, -232.5, 237.5, -190, 227.5, -192.5, 200, 65, -60, 92.5, -52.5, 232.5, -200, 225, -245, 175, -240, 47.5, -99.9999, 55, -72.5, -192.5, 182.5)
 
-[node name="Tooltip" type="ColorRect" parent="."]
-offset_left = -1.49997
-offset_top = 188.75
-offset_right = 317.5
-offset_bottom = 287.75
-color = Color(0, 0.844973, 0.820462, 1)
+[node name="Tooltip" type="Sprite2D" parent="."]
+position = Vector2(198, 167)
+texture = ExtResource("12_twf2n")
 
 [node name="Label" type="RichTextLabel" parent="Tooltip"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -55.0
+offset_right = -439.0
+offset_bottom = -559.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-text = "Clean to pearl to increase its value!
-Left click: pick up tool
-Right click: release tool"
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_wv4fc")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]Clean to pearl to increase its value!
+[center]Left click: pick up tool
+[center]Right click: release tool"
 
 [connection signal="button_down" from="Polish/PolishButton" to="." method="_on_polish_button_down"]
 [connection signal="area_entered" from="Polish/Area2D" to="." method="_on_polish_area_entered"]
