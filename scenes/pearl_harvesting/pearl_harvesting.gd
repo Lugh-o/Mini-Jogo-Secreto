@@ -31,6 +31,9 @@ var is_pearl_picked: bool = false
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var pearl_minigame_main: Node2D = $PearlMinigameMain
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+
 func _ready() -> void:
 	oyster_chosen = oyster_array[randi_range(0,1)]
 	var oyster_chosen_closed = oyster_chosen[0].instantiate()
@@ -84,7 +87,8 @@ func _on_spoon_button_pressed() -> void:
 func _on_pliers_area_entered(area: Area2D) -> void:
 	if area.is_in_group("oyster_closed") and not is_pliers_locked:
 		is_pliers_locked = true
-		camera_2d.call("ApplyShake", 20)		
+		camera_2d.call("ApplyShake", 20)
+		audio_stream_player_2d.play()
 		pliers.position = Vector2(850, 300)
 		pliers.rotation = PI/3
 
@@ -110,6 +114,7 @@ func _on_spoon_area_entered(area: Area2D) -> void:
 		if is_pearl_picked:
 			Input.warp_mouse(Vector2(756, 220))
 			camera_2d.call("ApplyShake", 20)
+			audio_stream_player_2d_2.play()
 			Globals.crack_amount += 1
 
 func _on_oyster_area_exited(area: Area2D) -> void:

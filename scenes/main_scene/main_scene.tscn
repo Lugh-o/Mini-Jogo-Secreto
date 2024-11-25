@@ -325,6 +325,8 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_aqx3r")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_aqx3r")
 flat = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="pressed" from="Camera2D/Shop/ShopButton" to="Camera2D/Shop" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="Camera2D/Shop/Item1/ItemButton" to="Camera2D/Shop" method="_on_item_button_pressed"]
 [connection signal="pressed" from="Control/1to2Button" to="." method="one_to_two_button_pressed"]
