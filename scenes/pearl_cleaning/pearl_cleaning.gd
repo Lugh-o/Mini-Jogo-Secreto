@@ -32,6 +32,8 @@ var dirt_cleaned: int = 0
 var is_polished: bool = false
 var cracks_taped: int = 0
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 func _ready() -> void:
 	create_crack()
 	position_tools()
@@ -111,6 +113,7 @@ func _on_polish_area_entered(area: Area2D) -> void:
 	if area.is_in_group("matte") and area.get_parent().visible == true:
 		area.get_parent().visible = false
 		is_polished = true
+		audio_stream_player_2d.play()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("clickDir"):

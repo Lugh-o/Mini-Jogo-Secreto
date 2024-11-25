@@ -11,7 +11,7 @@ extends Node2D
 @export var tape_amount = 0 
 @export var reputation = 0
 
-func _init() -> void:
+func _ready() -> void:
 	if(Globals.gamestate == 3):
 		camera_2d.position_smoothing_enabled = false
 		camera_2d.position.x = 576

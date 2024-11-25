@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cjakybops5iu0"]
+[gd_scene load_steps=19 format=3 uid="uid://cjakybops5iu0"]
 
 [ext_resource type="Script" path="res://scenes/pearl_cleaning/pearl_cleaning.gd" id="1_28cg8"]
 [ext_resource type="Texture2D" uid="uid://bjtr8ms2jj03n" path="res://assets/pearl_cleaning/brush.png" id="2_arbdv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bhj0met5e0lrf" path="res://assets/pearl_cleaning/tape.png" id="8_g2dfs"]
 [ext_resource type="Texture2D" uid="uid://coh3x3axn6inl" path="res://assets/peal_shop/small_box.png" id="12_twf2n"]
 [ext_resource type="Texture2D" uid="uid://c82mjme1mvjb" path="res://assets/peal_shop/big_box.png" id="13_nu81k"]
+[ext_resource type="AudioStream" uid="uid://bp7oei0lpu7sx" path="res://assets/sounds/69208__freqman__wipe-glass-window-clean.wav" id="14_ruo4e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtids"]
 
@@ -230,6 +231,9 @@ theme_override_fonts/normal_font = SubResource("SystemFont_s20qt")
 theme_override_font_sizes/normal_font_size = 82
 bbcode_enabled = true
 text = "[center]Congratulations!"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ruo4e")
 
 [connection signal="button_down" from="Polish/PolishButton" to="." method="_on_polish_button_down"]
 [connection signal="area_entered" from="Polish/Area2D" to="." method="_on_polish_area_entered"]
