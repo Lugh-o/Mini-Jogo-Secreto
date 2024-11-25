@@ -19,6 +19,8 @@ const crack_3: PackedScene = preload("res://scenes/pearl_cleaning/crack/crack_3.
 var crack_array = [crack_1, crack_2, crack_3]
 var cracks
 
+@onready var text: RichTextLabel = $Tape/RichTextLabel
+
 var is_brush = false
 var is_tape = false
 var is_polish = false
@@ -34,6 +36,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	handle_tools(delta)
 	check_if_clean()
+	handle_text()
+
+func handle_text() -> void:
+	text.text = "[font_size=100][right]x" + str(Globals.tape_ammount) + "[/right][/font_size]"
 
 func handle_tools(delta: float) -> void:
 	if is_brush:
@@ -91,9 +97,10 @@ func _on_brush_area_entered(area: Area2D) -> void:
 		dirt_cleaned += 1
 
 func _on_tape_area_entered(area: Area2D) -> void:
-	if area.is_in_group("crack") and area.get_parent().get_parent().get_child(1).visible == false:
+	if area.is_in_group("crack") and area.get_parent().get_parent().get_child(1).visible == false and Globals.tape_ammount > 0:
 		area.get_parent().get_parent().get_child(1).visible = true
 		cracks_taped += 1
+		Globals.tape_ammount -= 1
 
 func _on_polish_area_entered(area: Area2D) -> void:
 	if area.is_in_group("matte") and area.get_parent().visible == true:
@@ -107,10 +114,11 @@ func _input(event: InputEvent) -> void:
 		is_tape = false
 
 func check_if_clean() -> void:
-	var is_cleaned: bool = is_polished and dirt_cleaned == 3 and cracks_taped == cracks
+	var is_cleaned: bool = is_polished and dirt_cleaned == 3
 	if is_cleaned:
 		shine.visible = true
 		Globals.pearl_amount += 1
+		Globals.pearl_price -= Globals.crack_amount * 20
 		Globals.crack_amount = 0
 
 		# OVERLAY DE CONCLUIDO

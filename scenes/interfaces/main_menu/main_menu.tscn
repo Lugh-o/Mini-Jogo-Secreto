@@ -47,7 +47,7 @@ theme_override_constants/shadow_offset_x = -10
 theme_override_fonts/normal_font = SubResource("SystemFont_s35f8")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[wave=5][center]Fishy Business[/center][/wave]"
+text = "[wave=5][center]Pearl Dealer[/center][/wave]"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
