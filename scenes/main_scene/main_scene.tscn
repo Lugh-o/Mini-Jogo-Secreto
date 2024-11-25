@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjbkn1revra71"]
+[gd_scene load_steps=22 format=3 uid="uid://bjbkn1revra71"]
 
 [ext_resource type="Script" path="res://scenes/main_scene/main_scene.gd" id="1_oyh4y"]
 [ext_resource type="Texture2D" uid="uid://b10we274quci6" path="res://assets/controlls/arrow-right-solid.svg" id="2_8gl78"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/money.gd" id="7_no7po"]
 [ext_resource type="Script" path="res://Scripts/shop.gd" id="8_5gj3r"]
 [ext_resource type="Texture2D" uid="uid://bhj0met5e0lrf" path="res://assets/pearl_cleaning/tape.png" id="9_gwefj"]
+[ext_resource type="Texture2D" uid="uid://coh3x3axn6inl" path="res://assets/peal_shop/small_box.png" id="10_4uj3i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x3s3b"]
 
@@ -36,6 +37,12 @@ subpixel_positioning = 0
 [sub_resource type="SystemFont" id="SystemFont_mycwd"]
 font_names = PackedStringArray("Impact")
 subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_510dm"]
+font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqx3r"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_oyh4y")
@@ -180,27 +187,6 @@ offset_bottom = 792.0
 scale = Vector2(0.2, 0.2)
 icon = ExtResource("2_8gl78")
 
-[node name="Interactables" type="Node2D" parent="."]
-script = ExtResource("3_rfoeh")
-
-[node name="PearlFarming" type="Button" parent="Interactables"]
-offset_left = -663.0
-offset_top = 231.0
-offset_right = -492.0
-offset_bottom = 408.0
-
-[node name="PearlCleaning" type="Button" parent="Interactables"]
-offset_left = 481.0
-offset_top = 229.0
-offset_right = 682.0
-offset_bottom = 430.0
-
-[node name="PearlShop" type="Button" parent="Interactables"]
-offset_left = 1604.0
-offset_top = 261.0
-offset_right = 1866.0
-offset_bottom = 455.0
-
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -1148.0
 offset_top = 577.0
@@ -212,6 +198,132 @@ theme_override_fonts/normal_font = SubResource("SystemFont_mycwd")
 theme_override_font_sizes/normal_font_size = 60
 text = "$$$: 13"
 script = ExtResource("7_no7po")
+
+[node name="Interactables" type="Node2D" parent="."]
+script = ExtResource("3_rfoeh")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interactables"]
+position = Vector2(1751, 530)
+texture = ExtResource("10_4uj3i")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Interactables"]
+position = Vector2(570, 510)
+texture = ExtResource("10_4uj3i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactables"]
+position = Vector2(-566, 503)
+texture = ExtResource("10_4uj3i")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Interactables"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1591.0
+offset_top = 480.0
+offset_right = 1888.0
+offset_bottom = 581.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = SubResource("SystemFont_510dm")
+bbcode_enabled = true
+text = "[center][font_size=50][pulse]Sell Pearl"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Interactables"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 419.0
+offset_top = 461.0
+offset_right = 716.0
+offset_bottom = 568.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = SubResource("SystemFont_510dm")
+bbcode_enabled = true
+text = "[center][font_size=50][pulse]Clean Pearl"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Interactables"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -723.0
+offset_top = 413.5
+offset_right = -426.0
+offset_bottom = 555.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.168627, 0.427451, 0.45098, 1)
+theme_override_colors/font_outline_color = Color(0.12549, 0.321569, 0.341176, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = SubResource("SystemFont_510dm")
+bbcode_enabled = true
+text = "[center][font_size=50][pulse]Harvest Pearl"
+fit_content = true
+
+[node name="PearlFarming" type="Button" parent="Interactables"]
+z_index = 2
+offset_left = -751.0
+offset_top = 390.0
+offset_right = -393.0
+offset_bottom = 590.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aqx3r")
+flat = true
+
+[node name="PearlCleaning" type="Button" parent="Interactables"]
+z_index = 2
+offset_left = 383.0
+offset_top = 400.0
+offset_right = 749.0
+offset_bottom = 600.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aqx3r")
+flat = true
+
+[node name="PearlShop" type="Button" parent="Interactables"]
+z_index = 2
+offset_left = 1565.0
+offset_top = 418.0
+offset_right = 1925.0
+offset_bottom = 618.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_aqx3r")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aqx3r")
+flat = true
 
 [connection signal="pressed" from="Camera2D/Shop/ShopButton" to="Camera2D/Shop" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="Camera2D/Shop/Item1/ItemButton" to="Camera2D/Shop" method="_on_item_button_pressed"]

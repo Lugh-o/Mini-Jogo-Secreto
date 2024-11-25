@@ -1,7 +1,7 @@
 class_name PearlCleaning
 extends Node2D
 
-@onready var main_scene: PackedScene = preload("res://scenes/main_scene/main_scene.tscn")
+const main_scene = preload("res://scenes/main_scene/main_scene.tscn")
 
 @onready var brush: Sprite2D = $Brush
 @onready var tape: Sprite2D = $Tape
@@ -12,6 +12,8 @@ extends Node2D
 var target_pos_brush: Vector2
 var target_pos_tape: Vector2
 var target_pos_polish: Vector2
+
+var is_cleaned_once: bool
 
 const crack_1: PackedScene = preload("res://scenes/pearl_cleaning/crack/crack_1.tscn")
 const crack_2: PackedScene = preload("res://scenes/pearl_cleaning/crack/crack_2.tscn")
@@ -33,6 +35,8 @@ var cracks_taped: int = 0
 func _ready() -> void:
 	create_crack()
 	position_tools()
+	cracks_taped = 0
+	is_cleaned_once = false
 
 func _process(delta: float) -> void:
 	handle_tools(delta)
@@ -116,10 +120,11 @@ func _input(event: InputEvent) -> void:
 
 func check_if_clean() -> void:
 	var is_cleaned: bool = is_polished and dirt_cleaned == 3
-	if is_cleaned:
+	if is_cleaned and !is_cleaned_once:
+		is_cleaned_once = true
 		shine.visible = true
 		Globals.pearl_amount += 1
-		Globals.pearl_price -= Globals.crack_amount * 20
+		Globals.pearl_price -= (cracks - cracks_taped) * 20
 		Globals.crack_amount = 0
 		congratulations.visible = true
 		await get_tree().create_timer(3).timeout
